@@ -10,6 +10,8 @@ def fonctiony(s):
     y = sin((s ** 2) / (2 * a))
     return y
 
+def efneivnie():
+
 
 def clothoide(T, precision):
     liste_x = []
