@@ -2,7 +2,7 @@ from matplotlib.pyplot import *
 from scipy.integrate import quad
 from math import *
 
-
+#ok
 def fonctionx(s):
     x = cos((s ** 2) / (2 * a))
     return x
