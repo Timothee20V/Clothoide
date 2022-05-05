@@ -30,7 +30,7 @@ L=1.0
 
 phi = 0
 i = 2
-while x2[i]<x2[i-1] :
+while cos(phi)>0.02 :
 
 
     L = L + C
