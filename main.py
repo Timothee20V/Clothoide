@@ -2,15 +2,15 @@ from matplotlib.pyplot import *
 from scipy.integrate import quad
 from math import *
 
+
 def fonctionx(s):
     x = cos((s ** 2) / (2 * a))
     return x
 
+
 def fonctiony(s):
     y = sin((s ** 2) / (2 * a))
     return y
-
-def efneivnie():
 
 
 def clothoide(T, precision):
@@ -30,8 +30,8 @@ def clothoide(T, precision):
 
 def longueur_clothoide(liste1, liste2):
     longueur = 0
-    for i in range(0,len(liste1)-1):
-        longueur = longueur + sqrt((liste1[i+1]-liste1[i])**2 + (liste2[i+1]-liste2[i])**2)
+    for i in range(0, len(liste1) - 1):
+        longueur = longueur + sqrt((liste1[i + 1] - liste1[i]) ** 2 + (liste2[i + 1] - liste2[i]) ** 2)
     return longueur
 
 
