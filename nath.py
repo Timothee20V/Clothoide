@@ -7,6 +7,12 @@ liste_x = []
 liste_y = []
 
 
+
+def distance(x1,x2,y1,y2):
+    d = sqrt((x1-x2)**2 + (y1-y2)**2)
+    return d
+
+
 def dvpt_limite_de_x(s, nmax):
     x=10
     for n in range(0, nmax):
@@ -21,15 +27,17 @@ def dvpt_limite_de_y(s, nmax):
     return y
 
 
-t = -1000
+t = 10
 precision_du_devpt_limité = 1
+x = 0
 
-while t < 10000:
-    x = dvpt_limite_de_x(t, precision_du_devpt_limité)
+while x < 10000:
+    x1 = dvpt_limite_de_x(t, precision_du_devpt_limité)
     y = dvpt_limite_de_y(t, precision_du_devpt_limité)
     liste_x.append(x)
+
     liste_y.append(y)
-    t += 1
+    x += 1
 
 print(liste_x)
 print(liste_y)
