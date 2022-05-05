@@ -39,7 +39,8 @@ while cos(phi)>0.02 :
     y2.append(y2[i] - sin(phi) * C)
     i=i+1
 
-
+del x1[-1]
+del y1[-1]
 
 
 
