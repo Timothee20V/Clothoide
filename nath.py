@@ -2,7 +2,7 @@ from matplotlib.pyplot import *
 from math import *
 
 # methode d'euler avec dvpt limité
-
+#http://2.3jachtuches.pagesperso-orange.fr/dossiers/semi/semi.htm
 liste_x1 = [0, 0.001]
 liste_y = [0, 0.00001]
 
