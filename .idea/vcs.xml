@@ -2,9 +2,5 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/Maths-info" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/Projet" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/desktop-tutorial" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/maths_info" vcs="Git" />
   </component>
 </project>
