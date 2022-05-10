@@ -11,14 +11,16 @@ y2=[0,0,0]
 
 
 
+
 L = 1.00
 
 C=int(input("quelle est al vitesse?"))
 
 phi = 0
 i = 2
+"""
 n=int(input("nombre?"))
-"""while i<n :
+while i<n :
 
 
     L = L + C
@@ -30,6 +32,7 @@ L=1.0
 
 phi = 0
 i = 2
+lb=0
 while cos(phi)>0.02 :
 
 
@@ -38,10 +41,12 @@ while cos(phi)>0.02 :
     x2.append(x2[i] - cos(phi) * C)
     y2.append(y2[i] - sin(phi) * C)
     i=i+1
+    if cos(phi)>cos(3.14/4):
+        lb=lb+cos(phi)*C
 
 del x1[-1]
 del y1[-1]
-
+print (lb)
 
 
 x2.reverse()
