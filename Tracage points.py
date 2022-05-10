@@ -49,8 +49,6 @@ def bissectrice(A, B, C):
     D = xD, yD
     angle_1 = angle(D, B, A)
     angle_2 = angle(A, B, C) / 2
-    angleF = 0
-    xE, yE = 0, 0
 
     # meme moitié
     if xA > xB and xC > xB and yA > yB > yC:
