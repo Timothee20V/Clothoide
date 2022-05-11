@@ -7,7 +7,7 @@ def point(event):
     points_x.append(x)
     points_y.append(y)
 
-    cnv.create_text(points_x[-1], points_y[-1], text='')
+    cnv.create_text(points_x[-1], points_y[-1], text='●')
     cnv.create_text(points_x[-1], points_y[-1] + 10, text=len(points_x))
 
     if len(points_x) > 1:
