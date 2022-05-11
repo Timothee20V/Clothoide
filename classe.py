@@ -19,9 +19,9 @@ class cloto:
         while x[-1]!=p3x and y[-1]!=p3y:
 
             L = L + V
-            phi = phi + L / C ** 2
-            x2.append(x2[i] + cos(phi) * C)
-            y2.append(y2[i] + sin(phi) * C)
+            phi = phi + L / V ** 2
+            x.append(x[i] + cos(phi) * V)
+            y.append(y[i] + sin(phi) * V)
             i = i + 1
             """
             if cos(phi) > cos(3.14 / 4):
