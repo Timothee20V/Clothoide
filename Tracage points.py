@@ -7,7 +7,7 @@ def point(event):
     points_x.append(x)
     points_y.append(y)
 
-    cnv.create_text(points_x[-1], points_y[-1], text='')
+    cnv.create_text(points_x[-1], points_y[-1], text='●')
     cnv.create_text(points_x[-1], points_y[-1] + 10, text=len(points_x))
 
     if len(points_x) > 1:
@@ -51,48 +51,48 @@ def bissectrice(A, B, C):
     angle_2 = angle(A, B, C) / 2
 
     # meme moitié
-    if xA > xB and xC > xB and yA > yB > yC:
+    if xA >= xB and xC >= xB and yA >= yB >= yC:
         print("1")
         angleF = angle_1 - angle_2
         xE, yE = xB + cos(angleF * 2 * pi / 360) * R, yB + sin(angleF * 2 * pi / 360) * R
 
-    if xA > xB and xC > xB and yA < yB < yC:
+    if xA >= xB and xC >= xB and yA <= yB <= yC:
         print("2")
         angleF = angle_1 - angle_2
         xE, yE = xB + cos(angleF * 2 * pi / 360) * R, yB - sin(angleF * 2 * pi / 360) * R
 
-    if xA < xB and xC < xB and yA < yB < yC:
+    if xA <= xB and xC <= xB and yA <= yB <= yC:
         print("3")
         angleF = angle_1 + angle_2
         xE, yE = xB + cos(angleF * 2 * pi / 360) * R, yB - sin(angleF * 2 * pi / 360) * R
 
-    if xA < xB and xC < xB and yA > yB > yC:
+    if xA <= xB and xC <= xB and yA >= yB >= yC:
         print("4")
         angleF = angle_1 + angle_2
         xE, yE = xB + cos(angleF * 2 * pi / 360) * R, yB + sin(angleF * 2 * pi / 360) * R
 
-    if xA < xB < xC and yA < yB and yC < yB:
+    if xA <= xB <= xC and yA <= yB and yC <= yB:
         print("5")
         angleF = angle_1 - angle_2
         xE, yE = xB + cos(angleF * 2 * pi / 360) * R, yB - sin(angleF * 2 * pi / 360) * R
 
-    if xA > xB > xC and yA < yB and yC < yB:
+    if xA >= xB >= xC and yA <= yB and yC <= yB:
         print("6")
         angleF = angle_1 + angle_2
         xE, yE = xB + cos(angleF * 2 * pi / 360) * R, yB - sin(angleF * 2 * pi / 360) * R
 
-    if xA < xB < xC and yA > yB and yC > yB:
+    if xA <= xB <= xC and yA >= yB and yC >= yB:
         print("7")
         angleF = angle_1 - angle_2
         xE, yE = xB + cos(angleF * 2 * pi / 360) * R, yB + sin(angleF * 2 * pi / 360) * R
 
-    if xA > xB > xC and yA > yB and yC > yB:
+    if xA >= xB >= xC and yA >= yB and yC >= yB:
         print("8")
         angleF = angle_1 + angle_2
         xE, yE = xB + cos(angleF * 2 * pi / 360) * R, yB + sin(angleF * 2 * pi / 360) * R
 
     # symétrique par rapport au centre
-    if xA > xB > xC and yA > yB > yC:
+    if xA >= xB >= xC and yA > yB > yC:
         print("9")
         if angle(D, B, C) + angle(D, B, A) > 180:
             print("9.1")
@@ -103,7 +103,7 @@ def bissectrice(A, B, C):
             angleF = angle_1 - angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * R, yB + sin(angleF * 2 * pi / 360) * R
 
-    if xA < xB < xC and yA < yB < yC:
+    if xA <= xB <= xC and yA < yB < yC:
         print("10")
         if angle(D, B, C) + angle(D, B, A) > 180:
             print("10.1")
@@ -114,7 +114,7 @@ def bissectrice(A, B, C):
             angleF = angle_1 - angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * R, yB - sin(angleF * 2 * pi / 360) * R
 
-    if xA < xB < xC and yA > yB > yC:
+    if xA <= xB <= xC and yA > yB > yC:
         print("11")
         if angle(D, B, C) + angle(D, B, A) > 180:
             print("11.1")
@@ -125,7 +125,7 @@ def bissectrice(A, B, C):
             angleF = angle_1 - angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * R, yB + sin(angleF * 2 * pi / 360) * R
 
-    if xA > xB > xC and yA < yB < yC:
+    if xA >= xB >= xC and yA < yB < yC:
         print("12")
         if angle(D, B, C) + angle(D, B, A) > 180:
             print("12.1")
@@ -139,7 +139,7 @@ def bissectrice(A, B, C):
     # meme quart
     if xA > xB and xC > xB and yA > yB and yC > yB:
         print("13")
-        if angle(D, B, C) + angle(D, B, A) > 45:
+        if yA < yC:
             print("13.1")
             angleF = angle_1 + angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * R, yB + sin(angleF * 2 * pi / 360) * R
@@ -150,8 +150,36 @@ def bissectrice(A, B, C):
 
     if xA < xB and xC < xB and yA > yB and yC > yB:
         print("14")
-        angleF = angle_1 - angle_2
-        xE, yE = xB + cos(angleF * 2 * pi / 360) * R, yB + sin(angleF * 2 * pi / 360) * R
+        if yA < yC:
+            print("14.1")
+            angleF = angle_1 - angle_2
+            xE, yE = xB + cos(angleF * 2 * pi / 360) * R, yB + sin(angleF * 2 * pi / 360) * R
+        else:
+            print("14.2")
+            angleF = angle_1 + angle_2
+            xE, yE = xB + cos(angleF * 2 * pi / 360) * R, yB + sin(angleF * 2 * pi / 360) * R
+
+    if xA < xB and xC < xB and yA < yB and yC < yB:
+        print("15")
+        if yA > yC:
+            print("15.1")
+            angleF = angle_1 - angle_2
+            xE, yE = xB + cos(angleF * 2 * pi / 360) * R, yB - sin(angleF * 2 * pi / 360) * R
+        else:
+            print("15.2")
+            angleF = angle_1 + angle_2
+            xE, yE = xB + cos(angleF * 2 * pi / 360) * R, yB - sin(angleF * 2 * pi / 360) * R
+
+    if xA > xB and xC > xB and yA < yB and yC < yB:
+        print("16")
+        if yA > yC:
+            print("16.1")
+            angleF = angle_1 + angle_2
+            xE, yE = xB + cos(angleF * 2 * pi / 360) * R, yB - sin(angleF * 2 * pi / 360) * R
+        else:
+            print("16.2")
+            angleF = angle_1 - angle_2
+            xE, yE = xB + cos(angleF * 2 * pi / 360) * R, yB - sin(angleF * 2 * pi / 360) * R
 
     print("DBA:", angle_1)
     print("ABC:", angle_2 * 2)
