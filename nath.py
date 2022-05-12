@@ -59,10 +59,11 @@ precision_du_devpt_limité = 300
 A = 1
 
 for i in range(len(w)):
-    '''liste_x1.append(dvpt_limite_de_x(w[i], precision_du_devpt_limité))
-    liste_y.append(dvpt_limite_de_y(w[i], precision_du_devpt_limité))'''
+    liste_x1.append(dvpt_limite_de_x(w[i], precision_du_devpt_limité))
+    liste_y.append(dvpt_limite_de_y(w[i], precision_du_devpt_limité))
+    '''
     liste_x1.append(x_par_angot(w[i], precision_du_devpt_limité))
-    liste_y.append(y_par_angot(w[i], precision_du_devpt_limité))
+    liste_y.append(y_par_angot(w[i], precision_du_devpt_limité))'''
 
 print(liste_x1)
 print(liste_y)
