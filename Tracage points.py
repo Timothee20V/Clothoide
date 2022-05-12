@@ -1,5 +1,6 @@
 from tkinter import *
 from math import *
+from Vecteurs import *
 
 
 def point(event):

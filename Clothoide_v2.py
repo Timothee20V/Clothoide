@@ -50,7 +50,7 @@ plt.plot(x,y)
 plt.ylabel("S(ω)")
 plt.xlabel("C(ω)")
 
-plt.savefig('Clothoïde.png')
+'''plt.savefig('Clothoïde.png')'''
 
 plt.show()
 
