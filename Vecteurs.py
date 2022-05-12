@@ -44,3 +44,5 @@ print(AB.x, AB.y)
 print(CB.x, CB.y)
 print(AB.produit_scalaire(CB))
 print(AB.angle(CB))
+
+

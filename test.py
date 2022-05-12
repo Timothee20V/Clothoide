@@ -18,7 +18,7 @@ def point(event):
         BA = Vect(points_x[-2], points_y[-2], points_x[-3], points_y[-3], 'vecteur')
         BC = Vect(points_x[-2], points_y[-2], points_x[-1], points_y[-1], 'vecteur')
         cnv.create_text(points_x[-2], points_y[-2] - 10, text=round(BA.angle(BC)), fill='red')
-        bissectrice()
+        bissectrice(BA, BC)
 
 
 def clear():
@@ -27,14 +27,13 @@ def clear():
     points_y.clear()
 
 
-def bissectrice(AB ,CB):
-    xA, yA = A
-    xB, yB = B
-    xC, yC = C
-    xD, yD = 100 + xB, yB
-    D = xD, yD
-    angle_1 = angle(D, B, A)
-    angle_2 = angle(A, B, C) / 2
+def bissectrice(BA ,BC):
+    xA, yA = BA.x2, BA.y2
+    xB, yB = BA.x1, BA.y1
+    xC, yC = BC.x2, BC.y2
+    BD = Vect(BC.x1, BC.y1, BC.x1+100, BC.y1, 'vecteur')
+    angle_1 = BD.angle(BA)
+    angle_2 = BA.angle(BC) / 2
 
     # meme moitié
     if xA >= xB and xC >= xB and yA >= yB >= yC:
@@ -80,7 +79,7 @@ def bissectrice(AB ,CB):
     # symétrique par rapport au centre
     if xA >= xB >= xC and yA > yB > yC:
         print("9")
-        if angle(D, B, C) + angle(D, B, A) > 180:
+        if BD.angle(BC) + BD.angle(BA) > 180:
             print("9.1")
             angleF = angle_1 + angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * R, yB + sin(angleF * 2 * pi / 360) * R
@@ -91,7 +90,7 @@ def bissectrice(AB ,CB):
 
     if xA <= xB <= xC and yA < yB < yC:
         print("10")
-        if angle(D, B, C) + angle(D, B, A) > 180:
+        if BD.angle(BC) + BD.angle(BA) > 180:
             print("10.1")
             angleF = angle_1 + angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * R, yB - sin(angleF * 2 * pi / 360) * R
@@ -102,7 +101,7 @@ def bissectrice(AB ,CB):
 
     if xA <= xB <= xC and yA > yB > yC:
         print("11")
-        if angle(D, B, C) + angle(D, B, A) > 180:
+        if BD.angle(BC) + BD.angle(BA) > 180:
             print("11.1")
             angleF = angle_1 + angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * R, yB + sin(angleF * 2 * pi / 360) * R
@@ -113,7 +112,7 @@ def bissectrice(AB ,CB):
 
     if xA >= xB >= xC and yA < yB < yC:
         print("12")
-        if angle(D, B, C) + angle(D, B, A) > 180:
+        if BD.angle(BC) + BD.angle(BA) > 180:
             print("12.1")
             angleF = angle_1 + angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * R, yB - sin(angleF * 2 * pi / 360) * R
@@ -167,13 +166,15 @@ def bissectrice(AB ,CB):
             angleF = angle_1 - angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * R, yB - sin(angleF * 2 * pi / 360) * R
 
+
     print("DBA:", angle_1)
     print("ABC:", angle_2 * 2)
     print("ABC/2:", angle_2)
     print("F:", angleF)
+    BE = Vect(xB, yB, xE, yE, 'vecteur')
     cnv.create_text(xE, yE, text='●')
-    cnv.create_text(xE, yE + 10, text=round(angle(A, B, (xE, yE))), fill='green')
-    cnv.create_line(B, xE, yE)
+    cnv.create_text(xE, yE + 10, text=round(BE.angle(BA)), fill='green')
+    cnv.create_line(xB, yB, xE, yE)
 
 
 route = Tk()
