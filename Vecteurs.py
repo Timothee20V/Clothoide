@@ -12,8 +12,6 @@ class Vect:
         self.norme = sqrt((self.x ** 2 + self.y ** 2))
         self.genre = genre
 
-    def affiche(self):
-        print(self.x, self.y, self.genre)
 
     def __mul__(self, other):
         if self.genre == "vecteur":
@@ -28,15 +26,14 @@ class Vect:
             scalaire = self.produit_scalaire(other)
             BA = self.norme
             BC = other.norme
-            print(BA, BC)
             angle_rad = acos(scalaire / (BA * BC))
             angle_deg = 360 * angle_rad / (2 * pi)
             return angle_deg
 
 
-AB = Vect(0, 0, 5, 5, 'vecteur')
+"""AB = Vect(0, 0, 5, 5, 'vecteur')
 CB = Vect(0, 0, -5, 5, 'vecteur')
 print(AB.x, AB.y)
 print(CB.x, CB.y)
 print(AB.norme)
-print((AB * 2).norme)
+print((AB * 2).norme)"""

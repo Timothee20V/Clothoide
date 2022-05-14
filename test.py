@@ -34,10 +34,10 @@ def bissectrice(BA, BC):
     BD = Vect(BC.x1, BC.y1, BC.x1 + 100, BC.y1, 'vecteur')
     angle_1 = BD.angle(BA)
     angle_2 = BA.angle(BC) / 2
-    T = R/tan(BA.angle(BC)/2)
+    T = R/tan(((2 * pi) * (BA.angle(BC)) / 360) / 2)
     U = R / sin(((2 * pi) * (BA.angle(BC)) / 360) / 2)
 
-    print('T:', T, 'U:', U)
+
 
     # meme moitié
     if xA >= xB and xC >= xB and yA >= yB >= yC:
@@ -170,11 +170,17 @@ def bissectrice(BA, BC):
             angleF = angle_1 - angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB - sin(angleF * 2 * pi / 360) * U
 
-    print('T = ', BA*(1/(BA.norme)))
+    BF = BA*(T/(BA.norme))
+    print('T = ', T)
+    print('U = ', U)
+
     BE = Vect(xB, yB, xE, yE, 'vecteur')
     cnv.create_text(xE, yE, text='●')
     cnv.create_text(xE, yE + 10, text=round(BE.angle(BA)), fill='green')
     cnv.create_line(xB, yB, xE, yE)
+    cnv.create_line(BF.x + xB, BF.y + yB, xE, yE)
+    EF = Vect(xE, yE, BF.x + xB, BF.y + yB, 'vecteur')
+    print(EF.produit_scalaire(BA))
 
 
 route = Tk()
@@ -185,7 +191,7 @@ points_y = []
 
 DIM = 600
 dist = 2
-R = 20
+R = 40
 cnv = Canvas(route, width=DIM, height=DIM)
 
 cnv.pack()
