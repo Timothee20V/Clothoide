@@ -2,51 +2,49 @@ from matplotlib.pyplot import *
 from math import *
 
 title("Clothoïde")
-"""x1 = [0, 1.00, 1.01]
-y1 = [0, 0, 0]"""
-x2=[0,-1.00,-1.01]
-y2=[0,0,0]
 
 
 
 
+def changement(xa,ya,xf,yf,xe,ye):
+    x1=xa-xf,ya-yf
+    x1=x1/(sqrt((xa-xf)**2+(ya-yf)**2))
+    y1 = xe - xf, ye - yf
+    y1 = y1 / (sqrt((xe - xf) ** 2 + (ye - yf) ** 2))
+    return(x1,y1)
+
+def clothoide(xa,ya,xb,yb,xf,yf,xe,ye,xg,yg):
+    x1,y1=changement(xa,ya,xf,yf,xe,ye,xg,yg)
+    phi=0
+    x2=[xa,xf]
+    y2=[ya,yf]
 
 
-L = 1.00
-
-C=int(input("quelle est al vitesse?"))
-
-phi = 0
-i = 2
-"""
-n=int(input("nombre?"))
-while i<n :
 
 
-    L = L + C
-    phi = phi + L / C ** 2
-    x1.append(x1[i] + cos(phi) * C)
-    y1.append(y1[i] + sin(phi) * C)
-    i=i+1"""
-L=0.01
-
-phi = 0
-i = 2
-lb=0
-while cos(phi)>0.02 :
+    L=sqrt((xa-xf)**2+(ya-yf)**2)
 
 
-    L = L + C
-    phi = phi + L / C ** 2
-    x2.append(x2[i] - cos(phi) * C)
-    y2.append(y2[i] - sin(phi) * C)
-    i=i+1
-    if cos(phi)>cos(3.14/4):
-        lb=lb+cos(phi)*C
+    i = 1
+    C=1
+    while x2[-1]!=xg :
+        x2 = [xa, xf]
+        y2 = [ya, yf]
+        while x2[-1]/y2[-1]!=(xb-xe)/(yb-ye)
+            x11,y11=x1
+            x12,y12=y1
 
-"""del x1[-1]
-del y1[-1]"""
-print (lb)
+            L = L + C
+            phi = phi + L / C ** 2
+            x2.append(x2[i] - cos(phi) * C*x11+sin(phi)*C*x12)
+            y2.append(y2[i] + sin(phi) * C*y11+sin(phi)*C*y12)
+            i=i+1
+
+    l=len(x2)
+    for  i in range(1,l-2):
+        x2.append(2xe-x2[l-i])
+        y2.append(2*ye[l-1]-y2[l-i])
+
 
 """
 x2.reverse()
