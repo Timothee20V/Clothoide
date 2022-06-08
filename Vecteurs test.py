@@ -28,15 +28,3 @@ class Vect:
             angle_rad = acos(scalaire / (BA * BC))
             angle_deg = 360 * angle_rad / (2 * pi)
             return angle_deg
-
-
-
-
-
-
-"""AB = Vect(0, 0, 5, 5, 'vecteur')
-CB = Vect(0, 0, -5, 5, 'vecteur')
-print(AB.x, AB.y)
-print(CB.x, CB.y)
-print(AB.norme)
-print((AB * 2).norme)"""
