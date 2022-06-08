@@ -38,8 +38,8 @@ w = np.arange(0,ω,0.01)
 x = []
 y = []
 for i in range(len(w)):
-    x.append(integ(w[i]))
-    y.append(integ2(w[i]))
+    x.append((integ(w[i]))*(x1[0]+y1[0]))
+    y.append((integ2(w[i]))*(x1[1]+y1[1]))
 
 print(longueur_clothoide(x, y))
 plt.grid()
