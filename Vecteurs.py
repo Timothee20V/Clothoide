@@ -12,7 +12,6 @@ class Vect:
         self.norme = sqrt((self.x ** 2 + self.y ** 2))
         self.genre = genre
 
-
     def __mul__(self, other):
         if self.genre == "vecteur":
             return Vect(self.x1 * other, self.y1 * other, self.x2 * other, self.y2 * other, genre="vecteur")

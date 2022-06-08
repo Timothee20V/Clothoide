@@ -30,8 +30,7 @@ def clothoide(xa,ya,xb,yb,xf,yf,xe,ye,xg,yg):
     while x2[-1]!=xg :
         x2 = [xa, xf]
         y2 = [ya, yf]
-        c+=0.5
-        while x2[-1]/y2[-1]!=(xb-xe)/(yb-ye):
+        while x2[-1]/y2[-1]!=(xb-xe)/(yb-ye)
             x11,y11=x1
             x12,y12=y1
 
@@ -43,7 +42,7 @@ def clothoide(xa,ya,xb,yb,xf,yf,xe,ye,xg,yg):
 
     l=len(x2)
     for  i in range(1,l-2):
-        x2.append(2*  xe-x2[l-i])
+        x2.append(2xe-x2[l-i])
         y2.append(2*ye[l-1]-y2[l-i])
 
 
@@ -54,9 +53,6 @@ y2.reverse()
 """for k in range(len (x1)):
     x2.append(x1[k])
     y2.append(y1[k])"""
-clothoide(175,337,258,186,238.93238030603612,220.68928402154876,273.9859168040441,239.9571219641624,262.6232844264919,2016049305606376)
-
-
 plot(x2, y2, '-0', color='red')
 
 

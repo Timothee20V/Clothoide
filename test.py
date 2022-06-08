@@ -37,8 +37,6 @@ def bissectrice(BA, BC):
     T = R/tan(((2 * pi) * (BA.angle(BC)) / 360) / 2)
     U = R / sin(((2 * pi) * (BA.angle(BC)) / 360) / 2)
 
-
-
     # meme moitié
     if xA >= xB and xC >= xB and yA >= yB >= yC:
         print("1")
@@ -170,17 +168,25 @@ def bissectrice(BA, BC):
             angleF = angle_1 - angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB - sin(angleF * 2 * pi / 360) * U
 
-    BF = BA*(T/(BA.norme))
-    print('T = ', T)
-    print('U = ', U)
-
+    BF = BA*(T / BA.norme)
     BE = Vect(xB, yB, xE, yE, 'vecteur')
     cnv.create_text(xE, yE, text='●')
     cnv.create_text(xE, yE + 10, text=round(BE.angle(BA)), fill='green')
     cnv.create_line(xB, yB, xE, yE)
     cnv.create_line(BF.x + xB, BF.y + yB, xE, yE)
     EF = Vect(xE, yE, BF.x + xB, BF.y + yB, 'vecteur')
-    print(EF.produit_scalaire(BA))
+
+    BG = BE*((R/(cos((90-angle_2)* pi / 360))-R)/ BE.norme)
+    cnv.create_text(BG.x + xB, BG.y + yB, text='●')
+
+    print('A:', xA, yA)
+    print('B:', xB, yB)
+    print('F:', BF.x + xB, BF.y + yB)
+    print('E:', xE, yE)
+    print('G:', BG.x + xB, BG.y + yB)
+    print('T = ', T)
+    print('U = ', U)
+    print(Vect(xE, yE, BG.x + xB, BG.y + yB, 'vecteur').norme)
 
 
 route = Tk()
