@@ -7,7 +7,9 @@ pygame.display.set_caption("Chemin de fer")
 screen = pygame.display.set_mode((800, 450))
 
 #importer l'arriere plan
-background = pygame.image.load('asset/image/Cartoon_green_texture_grass.jpg')
+background = pygame.image.load('assets/image/Cartoon_green_texture_grass.jpg')
+#rescale de l'image
+background = pygame.transform.scale(background, (850, 600))
 
 #variable d'execution
 running = True
