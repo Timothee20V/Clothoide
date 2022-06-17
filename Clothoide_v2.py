@@ -28,31 +28,3 @@ def longueur_clothoide(liste1, liste2):
         longueur = longueur + sqrt((liste1[i + 1] - liste1[i]) ** 2 + (liste2[i + 1] - liste2[i]) ** 2)
     return longueur
 
-
-
-ω = 10
-
-w = np.arange(0,ω,0.01)
-
-
-x = []
-y = []
-for i in range(len(w)):
-    x.append((integ(w[i]))*(x1[0]+y1[0]))
-    y.append((integ2(w[i]))*(x1[1]+y1[1]))
-
-print(longueur_clothoide(x, y))
-plt.grid()
-plt.axis('equal')
-plt.title("Tracé de la clothoïde")
-
-plt.plot(x,y)
-plt.ylabel("S(ω)")
-plt.xlabel("C(ω)")
-
-'''plt.savefig('Clothoïde.png')'''
-
-plt.show()
-
-
-

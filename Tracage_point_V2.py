@@ -1,6 +1,7 @@
 from tkinter import *
 from math import *
 from Vecteurs_test import *
+from Clothoide_v2 import *
 
 
 def point(event):
@@ -9,7 +10,7 @@ def point(event):
     points_y.append(y)
 
     cnv.create_text(points_x[-1], points_y[-1], text='●')
-    cnv.create_text(points_x[-1], points_y[-1] + 10, text=len(points_x))
+    #cnv.create_text(points_x[-1], points_y[-1] + 10, text=len(points_x))
 
     if len(points_x) > 1:
         cnv.create_line(points_x[-2], points_y[-2], points_x[-1], points_y[-1])
@@ -17,7 +18,7 @@ def point(event):
     if len(points_x) > 2:
         BA = Vect(points_x[-2], points_y[-2], points_x[-3], points_y[-3], 'vecteur')
         BC = Vect(points_x[-2], points_y[-2], points_x[-1], points_y[-1], 'vecteur')
-        cnv.create_text(points_x[-2], points_y[-2] - 10, text=round(BA.angle(BC)), fill='red')
+        #cnv.create_text(points_x[-2], points_y[-2] - 10, text=round(BA.angle(BC)), fill='red')
         bissectrice(BA, BC)
 
 
@@ -191,33 +192,71 @@ def bissectrice(BA, BC):
     G = xG, yG
     H = xH, yH
 
+    global FE
+    FE = Vect(xF, yF, xE, yE, 'vecteur')
+    global FH
+    FH = Vect(xF, yF, xH, yH, 'vecteur')
+
+    cnv.create_text(xA, yA+10, text='A')
+    cnv.create_text(xB, yB+10, text='B')
+    cnv.create_text(xC, yC+10, text='C')
+    cnv.create_text(xE, yE+10, text='E')
+    cnv.create_text(xF, yF+10, text='F')
+    cnv.create_text(xG, yG+10, text='G')
+    cnv.create_text(xH, yH+10, text='H')
     cnv.create_text(E, text='●')
     cnv.create_text(F, text='●')
     cnv.create_text(G, text='●')
     cnv.create_text(H, text='●')
-    cnv.create_text(xE, yE + 10, text=round(BE.angle(BA)), fill='green')
+    #cnv.create_text(xE, yE + 10, text=round(BE.angle(BA)), fill='green')
     cnv.create_line(B, E)
     cnv.create_line(F, E)
     cnv.create_line(F, H)
 
-    print('A:', A)
+    '''print('A:', A)
     print('B:', B)
     print('C:', C)
     print('F:', F)
     print('E:', E)
     print('G:', G)
-    print('T = ', T)
-    print('U = ', U)
-    print('EF = ', EF.norme)
-    print('EG = ', Vect(xE, yE, xG, yG, 'vecteur').norme)
-    print('BE = ', BE.norme)
-    print('BG = ', BG_dist)
-    print("dlej")
+    print('T =', T)
+    print('U =', U)
+    print('EF =', EF.norme)
+    print('EG =', Vect(xE, yE, xG, yG, 'vecteur').norme)
+    print('BE =', BE.norme)
+    print('BG =', BG_dist)
+    print('C =', 2*R*sin(pi - 2*teta))
+    print('C1=', Vect(xF, yF, xH, yH, 'vecteur').norme)'''
 
 
-'''def clothoide():
-    FE = Vect(xE)
-    changement_base(FE, FE, FA)'''
+def clothoide():
+    angle_tangente_final = (FE.angle(FH)) * (2 * pi)/360 + pi/2
+
+    angle_tangente = 0
+    x = []
+    y = []
+    w = 0
+    while angle_tangente_final > angle_tangente:
+        x.append(integ(w))
+        y.append(integ2(w))
+        if len(x) > 1:
+            angle_tangente = atan((y[-1]-y[-2])/(x[-1]-x[-2]))
+            print(angle_tangente)
+
+        w = w + 0.01
+    print('w =', w)
+    print('angle_tangente_final =', angle_tangente_final)
+    print('angle_tangente =', angle_tangente)
+    plt.grid()
+    plt.axis('equal')
+    plt.title("Tracé de la clothoïde")
+
+    plt.plot(x, y)
+    plt.ylabel("S(ω)")
+    plt.xlabel("C(ω)")
+
+    plt.show()
+
 
 route = Tk()
 route.title('Route')
@@ -227,7 +266,7 @@ points_y = []
 
 DIM = 600
 dist = 2
-R = 40
+R = 100
 cnv = Canvas(route, width=DIM, height=DIM)
 
 cnv.pack()
@@ -235,6 +274,10 @@ cnv.pack()
 Bouton1 = Canvas(route)
 Button(Bouton1, text="Effacer", command=clear, bg='red').pack()
 Bouton1.pack()
+
+Bouton2 = Canvas(route)
+Button(Bouton2, text="Clothoide", command=clothoide, bg='red').pack()
+Bouton2.pack()
 
 cnv.bind("<Button-1>", point)
 
