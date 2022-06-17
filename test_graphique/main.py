@@ -4,7 +4,7 @@ pygame.init()
 #fenetre du jeu
 
 pygame.display.set_caption("Chemin de fer")
-screen = pygame.display.set_mode((800, 450))
+screen = pygame.display.set_mode((800, 600))
 
 #importer l'arriere plan
 background = pygame.image.load('assets/image/Cartoon_green_texture_grass.jpg')
@@ -24,11 +24,12 @@ while running:
     pygame.display.flip()
 
     #si on ferme la fenetre
-    for event in pygame.event.get():
+    for event in pygame.event.get(): 
         #si on clic sur la croix de fermeture
         if event.type == pygame.QUIT:
             running = False
-            pygame.quit()
+
+pygame.quit()
 
 
 
