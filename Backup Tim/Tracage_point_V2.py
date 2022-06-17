@@ -1,6 +1,6 @@
 from tkinter import *
 from math import *
-from Vecteurs import *
+from Vecteurs_test import *
 
 
 def point(event):
@@ -31,11 +31,15 @@ def bissectrice(BA, BC):
     xA, yA = BA.x2, BA.y2
     xB, yB = BA.x1, BA.y1
     xC, yC = BC.x2, BC.y2
-    BD = Vect(BC.x1, BC.y1, BC.x1 + 100, BC.y1, 'vecteur')
-    angle_1 = BD.angle(BA)
-    angle_2 = BA.angle(BC) / 2
-    T = R/tan(((2 * pi) * (BA.angle(BC)) / 360) / 2)
-    U = R / sin(((2 * pi) * (BA.angle(BC)) / 360) / 2)
+
+    BD = Vect(BC.x1, BC.y1, BC.x1 + 1, BC.y1, 'vecteur')      #Axe horizontal en B
+
+    angle_1 = BD.angle(BA)      #Angle DBA deg
+    angle_2 = BA.angle(BC) / 2      #Angle ABE deg
+    teta = ((2 * pi) * (BA.angle(BC)) / 360) / 2     #Angle ABE rad
+
+    T = R / tan(teta)        #Longueur BF
+    U = R / sin(teta)      #Longueur BE
 
     # meme moitié
     if xA >= xB and xC >= xB and yA >= yB >= yC:
@@ -169,25 +173,51 @@ def bissectrice(BA, BC):
             xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB - sin(angleF * 2 * pi / 360) * U
 
     BF = BA*(T / BA.norme)
+    BH = BC * (T / BC.norme)
     BE = Vect(xB, yB, xE, yE, 'vecteur')
-    cnv.create_text(xE, yE, text='●')
-    cnv.create_text(xE, yE + 10, text=round(BE.angle(BA)), fill='green')
-    cnv.create_line(xB, yB, xE, yE)
-    cnv.create_line(BF.x + xB, BF.y + yB, xE, yE)
     EF = Vect(xE, yE, BF.x + xB, BF.y + yB, 'vecteur')
 
-    BG = BE*((R/(cos((90-angle_2)* pi / 360))-R)/ BE.norme)
-    cnv.create_text(BG.x + xB, BG.y + yB, text='●')
+    BG_dist = R/cos((pi - 2*teta)/2)-R      #Longueur BG
+    BG = BE*(BG_dist / BE.norme)
 
-    print('A:', xA, yA)
-    print('B:', xB, yB)
-    print('F:', BF.x + xB, BF.y + yB)
-    print('E:', xE, yE)
-    print('G:', BG.x + xB, BG.y + yB)
+    xF, yF = BF.x + xB, BF.y + yB
+    xG, yG = BG.x + xB, BG.y + yB
+    xH, yH = BH.x + xB, BH.y + yB
+    A = xA, yA
+    B = xB, yB
+    C = xC, yC
+    E = xE, yE
+    F = xF, yF
+    G = xG, yG
+    H = xH, yH
+
+    cnv.create_text(E, text='●')
+    cnv.create_text(F, text='●')
+    cnv.create_text(G, text='●')
+    cnv.create_text(H, text='●')
+    cnv.create_text(xE, yE + 10, text=round(BE.angle(BA)), fill='green')
+    cnv.create_line(B, E)
+    cnv.create_line(F, E)
+    cnv.create_line(F, H)
+
+    print('A:', A)
+    print('B:', B)
+    print('C:', C)
+    print('F:', F)
+    print('E:', E)
+    print('G:', G)
     print('T = ', T)
     print('U = ', U)
-    print(Vect(xE, yE, BG.x + xB, BG.y + yB, 'vecteur').norme)
+    print('EF = ', EF.norme)
+    print('EG = ', Vect(xE, yE, xG, yG, 'vecteur').norme)
+    print('BE = ', BE.norme)
+    print('BG = ', BG_dist)
+    print("dlej")
 
+
+'''def clothoide():
+    FE = Vect(xE)
+    changement_base(FE, FE, FA)'''
 
 route = Tk()
 route.title('Route')
