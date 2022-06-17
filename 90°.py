@@ -6,8 +6,8 @@ title("Clothoïde")
 
 
 
-def changement(xa,ya,xf,yf,xe,ye):
-    x1=xa-xf,ya-yf
+def changement(xb,yb,xf,yf,xe,ye):
+    x1=xb-xf,yb-yf
     x1=x1/(sqrt((xa-xf)**2+(ya-yf)**2))
     y1 = xe - xf, ye - yf
     y1 = y1 / (sqrt((xe - xf) ** 2 + (ye - yf) ** 2))
