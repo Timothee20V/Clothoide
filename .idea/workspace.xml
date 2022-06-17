@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="74bc8baf-0bd5-47b6-86ed-8c3caa97b14f" name="Changes" comment="V1">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Projet" beforeDir="false" afterPath="$PROJECT_DIR$/Projet" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projet/Tracage point V2.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projet/Tracage point V2.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -218,7 +218,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655465640570</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="V1">
+      <created>1655470192446</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1655470192446</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -232,7 +239,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="main" />
+                        <option value="master" />
                       </list>
                     </value>
                   </entry>
