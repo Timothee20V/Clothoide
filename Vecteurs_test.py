@@ -17,8 +17,9 @@ class Vect:
             return Vect(self.x1 * other, self.y1 * other, self.x2 * other, self.y2 * other, genre="vecteur")
 
     def produit_scalaire(self, other):
-        val = self.x * other.x + self.y * other.y
-        return val
+        if (self.genre and other.genre) == 'vecteur':
+            val = self.x * other.x + self.y * other.y
+            return val
 
     def angle(self, other):
         if (self.genre and other.genre) == 'vecteur':
@@ -28,3 +29,8 @@ class Vect:
             angle_rad = acos(scalaire / (BA * BC))
             angle_deg = 360 * angle_rad / (2 * pi)
             return angle_deg
+
+    def changement_base(self, other1, other2):
+        if (self.genre and other1.genre and other2.genre) == 'vecteur':
+            alpha = angle(other1, Vect(0,0,1,0,'vecteur'))
+            print(alpha)
