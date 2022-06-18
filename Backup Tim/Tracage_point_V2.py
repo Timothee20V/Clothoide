@@ -257,6 +257,7 @@ def clothoide():
             angle_tangente = atan((y[-1] - y[-2]) / (x[-1] - x[-2]))  # arctan(dy/dx)
         w = w + 0.001
 
+    #symétrie
     """for i in range(len(x)):
         xI = x[i]
         yI = y[i]
@@ -285,10 +286,10 @@ def clothoide():
     plt.show()
 
 
-
 def affichage_clothoide():
     xA, yA = A
     xB, yB = B
+
     # rotation d'angle phi, de la clothoide
     phi = Vect(xA, yA, xB, yB, 'vecteur').angle(Vect(xA, yA, xA + 1, yA + 1, 'vecteur'))
     for i in range(len(x)):
