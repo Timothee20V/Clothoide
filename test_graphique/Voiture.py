@@ -4,12 +4,18 @@ import pyscroll
 
 class Car(pygame.sprite.Sprite):
 
-    def __init__(self):
+    def __init__(self,x,y):
         super().__init__()
         self.sprite_sheet = pygame.image.load('assets/image/voiture_sprite.png')
         self.image = self.get_image(0,0)
+        self.image.set_colorkey([255,255,255]) #enleve la couleur blanche de l'image
         self.rect = self.image.get_rect()
+        self.position = [x,y]
+
+    def update(self):
+        self.rect.topleft = self.position
 
     def get_image(self,x,y):
-        image = pygame.surface((31,43))
+        image = pygame.Surface([31,43])
         image.blit(self.sprite_sheet, (0,0), (x,y ,31 , 43))
+        return image
