@@ -2,50 +2,73 @@ from matplotlib.pyplot import *
 from math import *
 
 title("Clothoïde")
+#init
+xa=0
+ya=0
+xf=1
+yf=2
+xe=4
+ye=0
+xg=4
+yg=5
+xb=xe
+yb=10
 
-
-
-
+#changement de base
 def changement(xb,yb,xf,yf,xe,ye):
-    x1=xb-xf,yb-yf
-    x1=x1/(sqrt((xa-xf)**2+(ya-yf)**2))
-    y1 = xe - xf, ye - yf
-    y1 = y1 / (sqrt((xe - xf) ** 2 + (ye - yf) ** 2))
-    return(x1,y1)
+    x1x=xb-xf
+    x1y=yb-yf
+    x1x=x1x/(sqrt((xa-xf)**2+(ya-yf)**2))
+    x1y=x1y/(sqrt((xa-xf)**2+(ya-yf)**2))
+    y1x = xe - xf
+    y1y= ye - yf
+    y1x= y1x / (sqrt((xe - xf) ** 2 + (ye - yf) ** 2))
+    y1y=y1y / (sqrt((xe - xf) ** 2 + (ye - yf) ** 2))
+    return(x1x,x1y,y1x,y1y)
 
 def clothoide(xa,ya,xb,yb,xf,yf,xe,ye,xg,yg):
-    x1,y1=changement(xa,ya,xf,yf,xe,ye,xg,yg)
+    x1x,x1y,y1x,y1y=changement(xa,ya,xf,yf,xe,ye)
     phi=0
     x2=[xa,xf]
     y2=[ya,yf]
-
+    #la liste dees points
 
 
 
     L=sqrt((xa-xf)**2+(ya-yf)**2)
+    #longueur du premier pan de courbe
 
 
     i = 1
     C=1
     while x2[-1]!=xg :
+        """
         x2 = [xa, xf]
         y2 = [ya, yf]
-        while x2[-1]/y2[-1]!=(xb-xe)/(yb-ye)
+        """
+        while x2[-1]/y2[-1]!=((xb-xe)/(yb-ye)):
+            """
             x11,y11=x1
             x12,y12=y1
-
+"""
             L = L + C
             phi = phi + L / C ** 2
-            x2.append(x2[i] - cos(phi) * C*x11+sin(phi)*C*x12)
-            y2.append(y2[i] + sin(phi) * C*y11+sin(phi)*C*y12)
+            x2.append(x2[i] + cos(phi) * C*x1x+sin(phi)*C*y1x)
+            y2.append(y2[i] + sin(phi) * C*y1y+cos(phi)*C*x1y)
             i=i+1
 
+    #la symétrie
     l=len(x2)
     for  i in range(1,l-2):
-        x2.append(2xe-x2[l-i])
+        x2.append(2*xe-x2[l-i])
         y2.append(2*ye[l-1]-y2[l-i])
 
 
+
+
+
+
+clothoide(xa,ya,xb,yb,xf,yf,xe,ye,xg,yg)
 """
 x2.reverse()
 y2.reverse()
