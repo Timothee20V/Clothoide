@@ -2,17 +2,7 @@ from matplotlib.pyplot import *
 from math import *
 
 title("Clothoïde")
-#init
-xa=0
-ya=0
-xf=1
-yf=2
-xe=4
-ye=0
-xg=4
-yg=5
-xb=xe
-yb=10
+
 
 #changement de base
 def changement(xb,yb,xf,yf,xe,ye):
@@ -26,7 +16,7 @@ def changement(xb,yb,xf,yf,xe,ye):
     y1y=y1y / (sqrt((xe - xf) ** 2 + (ye - yf) ** 2))
     return(x1x,x1y,y1x,y1y)
 
-def clothoide(xa,ya,xb,yb,xf,yf,xe,ye,xg,yg):
+def clothoide(xa,ya,xb,yb,xf,yf,xe,ye):
     x1x,x1y,y1x,y1y=changement(xa,ya,xf,yf,xe,ye)
     phi=0
     x2=[xa,xf]
@@ -41,28 +31,39 @@ def clothoide(xa,ya,xb,yb,xf,yf,xe,ye,xg,yg):
 
     i = 1
     C=1
-    while x2[-1]!=xg :
-        """
-        x2 = [xa, xf]
-        y2 = [ya, yf]
-        """
-        while x2[-1]/y2[-1]!=((xb-xe)/(yb-ye)):
-            """
-            x11,y11=x1
-            x12,y12=y1
-"""
+    #on itère une fois le programme pour éviter la division par 0
+    L = L + C
+    phi = phi + L / C ** 2
+    x2.append(x2[i] + cos(phi) * C * x1x + sin(phi) * C * y1x)
+    y2.append(y2[i] + sin(phi) * C * y1y + cos(phi) * C * x1y)
+    i = i + 1
+    if xb!=xe:
+        #xb=xe entraine un division par 0
+        while ((x2[-1]-xe)*(yb-ye)/abs(xb-xe)+y2[-1])*((x2[-2]-xe)*(yb-ye)/abs(xb-xe)+y2[-2])>0:
+#on vérifie que ce pan de droite ne traverse pas BE
+
             L = L + C
             phi = phi + L / C ** 2
             x2.append(x2[i] + cos(phi) * C*x1x+sin(phi)*C*y1x)
             y2.append(y2[i] + sin(phi) * C*y1y+cos(phi)*C*x1y)
             i=i+1
+    if xb==xe:
+        while x2[-1]*x2[-2]>0:
+            # on vérifie que ce pan de droite ne traverse pas BE
 
-    #la symétrie
+            L = L + C
+            phi = phi + L / C ** 2
+            x2.append(x2[i] + cos(phi) * C * x1x + sin(phi) * C * y1x)
+            y2.append(y2[i] + sin(phi) * C * y1y + cos(phi) * C * x1y)
+            i = i + 1
+#la symétrie
     l=len(x2)
     for  i in range(1,l-2):
         x2.append(2*xe-x2[l-i])
-        y2.append(2*ye[l-1]-y2[l-i])
+        y2.append(2*ye-y2[l-i])
+    plot(x2, y2, '-0', color='red')
 
+    show()
 
 
 
@@ -76,7 +77,3 @@ y2.reverse()
 """for k in range(len (x1)):
     x2.append(x1[k])
     y2.append(y1[k])"""
-plot(x2, y2, '-0', color='red')
-
-
-show()
