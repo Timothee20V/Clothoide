@@ -247,10 +247,11 @@ def clothoide():
     xE, yE = E
     xF, yF = F
 
-    """
-    clothoide_fct(xA, yA, xB, yB, xF, yF, xE, yE)"""
 
-    """angle_tangente_final = (FE.angle(FH)) * (2 * pi) / 360 + pi / 2
+    clothoide_fct(xA, -yA, xB, -yB, xF, - yF, xE, -yE)
+    """
+
+    angle_tangente_final = (FE.angle(FH)) * (2 * pi) / 360 + pi / 2
 
     angle_tangente = 0
     x = []
