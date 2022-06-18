@@ -28,7 +28,7 @@ while i<n :
     y1.append(y1[i] + C*( cos(phi) * y1[1]+sin(phi)*x1[1]))
     i=i+1
 L=10
-'''
+
 phi = 0
 i = 2
 while i<n :
@@ -51,6 +51,6 @@ for k in range(len (x1)):
     x2.append(x1[k])
     y2.append(y1[k])
 plot(x2, y2, '-0', color='red')
-'''
+
 
 show()
