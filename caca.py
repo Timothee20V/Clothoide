@@ -2,8 +2,8 @@ from matplotlib.pyplot import *
 from math import *
 
 title("Clothoïde")
-x1 = [xa, xf, xf]
-y1 = [ya, yf, yf]
+x1 = [0, 100,100]
+y1 = [0, 0, 0.01]
 """
 x2=[0,-1.00,-1.01]
 y2=[0,0,0]"""
@@ -12,23 +12,23 @@ y2=[0,0,0]"""
 
 
 
-L = 1.00
+L = 100
 
-C=500
+C=100
 
 phi = 0
 i = 2
-n=int(input("nombre?"))
+n=500
 while i<n :
 
 
     L = L + C
     phi = phi + L / C ** 2
-    x1.append(x1[i] +C*( cos(phi) * x1[0]+sin(phi)*y1[0]))
-    y1.append(y1[i] + C*( cos(phi) * y1[1]+sin(phi)*x1[1]))
+    x1.append(x1[i] +C*( cos(phi) ))
+    y1.append(y1[i] + C*( sin(phi) ))
     i=i+1
-L=10
 
+"""
 phi = 0
 i = 2
 while i<n :
@@ -50,7 +50,8 @@ y2.reverse()
 for k in range(len (x1)):
     x2.append(x1[k])
     y2.append(y1[k])
-plot(x2, y2, '-0', color='red')
+    """
+plot(x1, y1, '-0', color='red')
 
 
 show()
