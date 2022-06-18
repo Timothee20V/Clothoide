@@ -2,6 +2,7 @@ from tkinter import *
 from math import *
 from Vecteurs_test import *
 from Clothoide_v2 import *
+from Clothoide_v3 import *
 
 
 def point(event):
@@ -10,7 +11,7 @@ def point(event):
     points_y.append(y)
 
     cnv.create_text(points_x[-1], points_y[-1], text='●')
-    #cnv.create_text(points_x[-1], points_y[-1] + 10, text=len(points_x))
+    # cnv.create_text(points_x[-1], points_y[-1] + 10, text=len(points_x))
 
     if len(points_x) > 1:
         cnv.create_line(points_x[-2], points_y[-2], points_x[-1], points_y[-1])
@@ -18,7 +19,7 @@ def point(event):
     if len(points_x) > 2:
         BA = Vect(points_x[-2], points_y[-2], points_x[-3], points_y[-3], 'vecteur')
         BC = Vect(points_x[-2], points_y[-2], points_x[-1], points_y[-1], 'vecteur')
-        #cnv.create_text(points_x[-2], points_y[-2] - 10, text=round(BA.angle(BC)), fill='red')
+        # cnv.create_text(points_x[-2], points_y[-2] - 10, text=round(BA.angle(BC)), fill='red')
         bissectrice(BA, BC)
 
 
@@ -33,14 +34,14 @@ def bissectrice(BA, BC):
     xB, yB = BA.x1, BA.y1
     xC, yC = BC.x2, BC.y2
 
-    BD = Vect(BC.x1, BC.y1, BC.x1 + 1, BC.y1, 'vecteur')      #Axe horizontal en B
+    BD = Vect(BC.x1, BC.y1, BC.x1 + 1, BC.y1, 'vecteur')  # Axe horizontal en B
 
-    angle_1 = BD.angle(BA)      #Angle DBA deg
-    angle_2 = BA.angle(BC) / 2      #Angle ABE deg
-    teta = ((2 * pi) * (BA.angle(BC)) / 360) / 2     #Angle ABE rad
+    angle_1 = BD.angle(BA)  # Angle DBA deg
+    angle_2 = BA.angle(BC) / 2  # Angle ABE deg
+    teta = ((2 * pi) * (BA.angle(BC)) / 360) / 2  # Angle ABE rad
 
-    T = R / tan(teta)        #Longueur BF
-    U = R / sin(teta)      #Longueur BE
+    T = R / tan(teta)  # Longueur BF
+    U = R / sin(teta)  # Longueur BE
 
     # meme moitié
     if xA >= xB and xC >= xB and yA >= yB >= yC:
@@ -173,13 +174,13 @@ def bissectrice(BA, BC):
             angleF = angle_1 - angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB - sin(angleF * 2 * pi / 360) * U
 
-    BF = BA*(T / BA.norme)
+    BF = BA * (T / BA.norme)
     BH = BC * (T / BC.norme)
     BE = Vect(xB, yB, xE, yE, 'vecteur')
     EF = Vect(xE, yE, BF.x + xB, BF.y + yB, 'vecteur')
 
-    BG_dist = R/cos((pi - 2*teta)/2)-R      #Longueur BG
-    BG = BE*(BG_dist / BE.norme)
+    BG_dist = R / cos((pi - 2 * teta) / 2) - R  # Longueur BG
+    BG = BE * (BG_dist / BE.norme)
 
     xF, yF = BF.x + xB, BF.y + yB
     xG, yG = BG.x + xB, BG.y + yB
@@ -197,18 +198,18 @@ def bissectrice(BA, BC):
     global FH
     FH = Vect(xF, yF, xH, yH, 'vecteur')
 
-    cnv.create_text(xA, yA+10, text='A')
-    cnv.create_text(xB, yB+10, text='B')
-    cnv.create_text(xC, yC+10, text='C')
-    cnv.create_text(xE, yE+10, text='E')
-    cnv.create_text(xF, yF+10, text='F')
-    cnv.create_text(xG, yG+10, text='G')
-    cnv.create_text(xH, yH+10, text='H')
+    cnv.create_text(xA, yA + 10, text='A')
+    cnv.create_text(xB, yB + 10, text='B')
+    cnv.create_text(xC, yC + 10, text='C')
+    cnv.create_text(xE, yE + 10, text='E')
+    cnv.create_text(xF, yF + 10, text='F')
+    cnv.create_text(xG, yG + 10, text='G')
+    cnv.create_text(xH, yH + 10, text='H')
     cnv.create_text(E, text='●')
     cnv.create_text(F, text='●')
     cnv.create_text(G, text='●')
     cnv.create_text(H, text='●')
-    #cnv.create_text(xE, yE + 10, text=round(BE.angle(BA)), fill='green')
+    # cnv.create_text(xE, yE + 10, text=round(BE.angle(BA)), fill='green')
     cnv.create_line(B, E)
     cnv.create_line(F, E)
     cnv.create_line(F, H)
@@ -230,7 +231,7 @@ def bissectrice(BA, BC):
 
 
 def clothoide():
-    angle_tangente_final = (FE.angle(FH)) * (2 * pi)/360 + pi/2
+    angle_tangente_final = (FE.angle(FH)) * (2 * pi) / 360 + pi / 2
 
     angle_tangente = 0
     x = []
@@ -240,7 +241,7 @@ def clothoide():
         x.append(integ(w))
         y.append(integ2(w))
         if len(x) > 1:
-            angle_tangente = atan((y[-1]-y[-2])/(x[-1]-x[-2]))
+            angle_tangente = atan((y[-1] - y[-2]) / (x[-1] - x[-2]))
             print(angle_tangente)
 
         w = w + 0.01
