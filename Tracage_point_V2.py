@@ -185,6 +185,14 @@ def bissectrice(BA, BC):
     xF, yF = BF.x + xB, BF.y + yB
     xG, yG = BG.x + xB, BG.y + yB
     xH, yH = BH.x + xB, BH.y + yB
+
+    global A
+    global B
+    global C
+    global E
+    global F
+    global G
+
     A = xA, yA
     B = xB, yB
     C = xC, yC
@@ -192,6 +200,9 @@ def bissectrice(BA, BC):
     F = xF, yF
     G = xG, yG
     H = xH, yH
+
+
+
 
     global FE
     FE = Vect(xF, yF, xE, yE, 'vecteur')
@@ -231,7 +242,14 @@ def bissectrice(BA, BC):
 
 
 def clothoide():
-    angle_tangente_final = (FE.angle(FH)) * (2 * pi) / 360 + pi / 2
+    xA, yA = A
+    xB, yB = B
+    xE, yE = E
+    xF, yF = F
+    xG, yG = G
+
+    clothoide(xA, yA, xB, yB, xF, yF, xE, yE, xG, yG)
+    """angle_tangente_final = (FE.angle(FH)) * (2 * pi) / 360 + pi / 2
 
     angle_tangente = 0
     x = []
@@ -256,7 +274,7 @@ def clothoide():
     plt.ylabel("S(ω)")
     plt.xlabel("C(ω)")
 
-    plt.show()
+    plt.show()"""
 
 
 route = Tk()
