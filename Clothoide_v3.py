@@ -5,7 +5,7 @@ title("Clothoïde")
 
 
 #changement de base
-def changement(xb,yb,xf,yf,xe,ye):
+def changement(xa,ya,xb,yb,xf,yf,xe,ye):
     x1x=xb-xf
     x1y=yb-yf
     x1x=x1x/(sqrt((xa-xf)**2+(ya-yf)**2))
@@ -17,7 +17,7 @@ def changement(xb,yb,xf,yf,xe,ye):
     return(x1x,x1y,y1x,y1y)
 
 def clothoide(xa,ya,xb,yb,xf,yf,xe,ye):
-    x1x,x1y,y1x,y1y=changement(xa,ya,xf,yf,xe,ye)
+    x1x,x1y,y1x,y1y=changement(xa,ya,xb,yb,xf,yf,xe,ye)
     phi=0
     x2=[xa,xf]
     y2=[ya,yf]
