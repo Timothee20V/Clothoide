@@ -1,7 +1,7 @@
-from matplotlib.pyplot import *
+import matplotlib.pyplot as plt
 from math import *
 
-title("Clothoïde")
+plt.title("Clothoïde")
 
 
 #changement de base
@@ -16,8 +16,8 @@ def changement(xa,ya,xb,yb,xf,yf,xe,ye):
     y1y=y1y / (sqrt((xe - xf) ** 2 + (ye - yf) ** 2))
     return(x1x,x1y,y1x,y1y)
 
-def clothoide(xa,ya,xb,yb,xf,yf,xe,ye):
-    x1x,x1y,y1x,y1y=changement(xa,ya,xb,yb,xf,yf,xe,ye)
+def clothoide_fct(xa,ya,xb,yb,xf,yf,xe,ye):
+    x1x,x1y,y1x,y1y=changement(xa,ya,xf,yf,xe,ye)
     phi=0
     x2=[xa,xf]
     y2=[ya,yf]
@@ -61,9 +61,9 @@ def clothoide(xa,ya,xb,yb,xf,yf,xe,ye):
     for  i in range(1,l-2):
         x2.append(2*xe-x2[l-i])
         y2.append(2*ye-y2[l-i])
-    plot(x2, y2, '-0', color='red')
+    plt.plot(x2, y2, '-0', color='red')
 
-    show()
+    plt.show()
 
 
 
