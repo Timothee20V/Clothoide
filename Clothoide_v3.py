@@ -17,7 +17,7 @@ def changement(xa,ya,xb,yb,xf,yf,xe,ye):
     return(x1x,x1y,y1x,y1y)
 
 def clothoide_fct(xa,ya,xb,yb,xf,yf,xe,ye):
-    x1x,x1y,y1x,y1y=changement(xa,ya,xf,yf,xe,ye)
+    x1x,x1y,y1x,y1y=changement(xa,ya,xb,yb,xf,yf,xe,ye)
     phi=0
     x2=[xa,xf]
     y2=[ya,yf]
