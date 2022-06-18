@@ -69,7 +69,7 @@ def clothoide(xa,ya,xb,yb,xf,yf,xe,ye):
 
 
 
-clothoide(xa,ya,xb,yb,xf,yf,xe,ye,xg,yg)
+
 """
 x2.reverse()
 y2.reverse()
