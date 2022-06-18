@@ -15,6 +15,10 @@ class Car(pygame.sprite.Sprite):
     def update(self):
         self.rect.topleft = self.position
 
+    def rotation(self,angle):
+        self.image = pygame.transform.rotozoom(self.image, angle,1)
+        self.rect = self.image.get_rect(center=self.rect.center)
+
     def get_image(self,x,y):
         image = pygame.Surface([31,43])
         image.blit(self.sprite_sheet, (0,0), (x,y ,31 , 43))
