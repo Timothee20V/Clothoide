@@ -4,17 +4,17 @@ from math import *
 title("Clothoïde")
 x1 = [0, 100, 100]
 y1 = [0, 0, 0.01]
-"""
-x2=[0,-1.00,-1.01]
-y2=[0,0,0]"""
+
+x2=[0,-100,-100]
+y2=[0,0,-0.01]
 
 L = 100
 
-C = 100
+C = 1000
 
 phi = 0
 i = 2
-n = 500
+n = 1000
 while i < n:
     L = L + C
     phi = phi + L / C ** 2
@@ -22,7 +22,9 @@ while i < n:
     y1.append(y1[i] + C * (sin(phi)))
     i = i + 1
 
-"""
+L=100
+C=1000
+
 phi = 0
 i = 2
 while i<n :
@@ -38,13 +40,13 @@ while i<n :
 
 
 
-x2.reverse()
-y2.reverse()
+x1.reverse()
+y1.reverse()
 
 for k in range(len (x1)):
-    x2.append(x1[k])
-    y2.append(y1[k])
-    """
+    x1.append(x2[k])
+    y1.append(y2[k])
+
 plot(x1, y1, '-0', color='red')
 
 show()
