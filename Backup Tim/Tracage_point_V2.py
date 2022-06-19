@@ -251,39 +251,33 @@ def clothoide():
     y = []
     w = 0
     while angle_tangente < angle_tangente_final:
-        x.append(integ(w))
-        y.append(integ2(w))
+        x.append(200*integ(w))
+        y.append(200*integ2(w))
         if len(x) > 1:
             angle_tangente = atan((y[-1] - y[-2]) / (x[-1] - x[-2]))  # arctan(dy/dx)
-        w = w + 0.001
+        w = w + 0.01
 
     #symétrie
-    """for i in range(len(x)):
+    '''x_sym = []
+    y_sym = []
+    for i in range(len(x)-1):
         xI = x[i]
         yI = y[i]
-        alpha = Vect(xE, yE, xI, yI, 'vecteur').angle(Vect(xE, yE, xB, yB, 'vecteur'))
+        print('xI:', xI, 'yI:', yI)
+        alpha = Vect(x[-1], y[-1], xI, yI, 'vecteur').angle(Vect(xE, yE, xB, yB, 'vecteur'))
         print("alpha deg =", alpha)
         alpha = alpha * 2 * pi / 360
 
         print("alpha =", alpha)
-        X = (xI - xE) * cos(2 * alpha) - (yI - yE) * sin(2 * alpha)
-        Y = (xI - xE) * sin(2 * alpha) - (yI - yE) * cos(2 * alpha)
-        x.append(X + xE)
-        y.append(Y + yE)"""
+        X = (xI - x[-1]) * cos(2*pi - 2 * alpha) - (yI - y[-1]) * sin(2*pi - 2 * alpha)
+        Y = (xI - x[-1]) * sin(2*pi - 2 * alpha) + (yI - y[-1]) * cos(2*pi - 2 * alpha)
+        x_sym.append(X + x[-1])
+        y_sym.append(Y + y[-1])'''
 
     print('w =', w)
     print('angle_tangente_final =', angle_tangente_final)
     print('angle_tangente =', angle_tangente)
-    plt.grid()
-    plt.axis('equal')
-    plt.title("Tracé de la clothoïde")
-
     affichage_clothoide()
-    plt.plot(x, y)
-    plt.ylabel("S(ω)")
-    plt.xlabel("C(ω)")
-
-    plt.show()
 
 
 def affichage_clothoide():
@@ -291,18 +285,31 @@ def affichage_clothoide():
     xB, yB = B
 
     # rotation d'angle phi, de la clothoide
-    phi = Vect(xA, yA, xB, yB, 'vecteur').angle(Vect(xA, yA, xA + 1, yA + 1, 'vecteur'))
-    for i in range(len(x)):
+    phi = Vect(xA, yA, xB, yB, 'vecteur').angle(Vect(xA, yA, xA + 1, yA, 'vecteur'))
+    print(phi)
+    phi = phi * 2 * pi / 360
+
+    for i in range(1, len(x)):
         xI = x[i]
         yI = y[i]
-        phi = phi * 2 * pi / 360
-        X = (xI) * cos(2 * phi) - (yI) * sin(phi)
-        Y = (xI) * sin(2 * phi) - (yI) * cos(phi)
-        x[i] = X
-        y[i] = Y
+        angle_pro = Vect(0, 0, 1, 0, 'vecteur').angle(Vect(0, 0, xI, yI, 'vecteur'))
+        angle_pro = angle_pro * 2 * pi / 360
+        norme = Vect(0, 0, xI, yI, 'vecteur').norme
+        x[i] = norme * cos(angle_pro + phi)
+        y[i] = norme * sin(angle_pro + phi)
+
+
 
     # deplacement de la clothoide
 
+    for i in range(0, len(x)):
+        x[i] = x[i] + xA
+        y[i] = yA - y[i]
+        if i > 2:
+            cnv.create_line(x[i-1], y[i-1], x[i], y[i])
+        cnv.create_text(0, 0, text='●')
+        cnv.create_text(10, 100, text='100y')
+        cnv.create_text(100, 10, text='100x')
 
 route = Tk()
 route.title('Route')
