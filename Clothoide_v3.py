@@ -61,9 +61,10 @@ def clothoide_fct(xa,ya,xb,yb,xf,yf,xe,ye):
             x2.append(x2[i] - cos(phi) * C*x1x+sin(phi)*C*y1x)
             y2.append(y2[i] + sin(phi) * C*y1y-cos(phi)*C*x1y)
             i=i+1
+    for i in range (0,len (x2)):
+        x2[i]=-x2[i]
 
-
-    elif xb==xe:
+    if xb==xe:
         while x2[-1]*x2[-2]>0:
             # on vérifie que ce pan de droite ne traverse pas BE
 
