@@ -4,7 +4,6 @@ from Vecteurs_test import *
 from Clothoide_v2 import *
 
 
-
 def point(event):
     x, y = event.x, event.y
     points_x.append(x)
@@ -13,8 +12,8 @@ def point(event):
     cnv.create_text(points_x[-1], points_y[-1], text='●')
     # cnv.create_text(points_x[-1], points_y[-1] + 10, text=len(points_x))
 
-    if len(points_x) > 1:
-        cnv.create_line(points_x[-2], points_y[-2], points_x[-1], points_y[-1])
+    '''if len(points_x) > 1:
+        cnv.create_line(points_x[-2], points_y[-2], points_x[-1], points_y[-1])'''
 
     if len(points_x) > 2:
         BA = Vect(points_x[-2], points_y[-2], points_x[-3], points_y[-3], 'vecteur')
@@ -27,6 +26,8 @@ def clear():
     cnv.delete(ALL)
     points_x.clear()
     points_y.clear()
+    X.clear()
+    Y.clear()
 
 
 def bissectrice(BA, BC):
@@ -212,43 +213,14 @@ def bissectrice(BA, BC):
             xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB - sin(angleF * 2 * pi / 360) * U
             clothoide(1, -1)
 
-    EF = Vect(xE, yE, BF.x + xB, BF.y + yB, 'vecteur')
 
-    cnv.create_text(xA, yA + 10, text='A')
-    cnv.create_text(xB, yB + 10, text='B')
-    cnv.create_text(xC, yC + 10, text='C')
-    cnv.create_text(xE, yE + 10, text='E')
-    cnv.create_text(xF, yF + 10, text='F')
-    cnv.create_text(xG, yG + 10, text='G')
-    cnv.create_text(xH, yH + 10, text='H')
-    cnv.create_text(xE, yE, text='●')
-    cnv.create_text(xF, yF, text='●')
-    cnv.create_text(xG, yG, text='●')
-    cnv.create_text(xH, yH, text='●')
-    # cnv.create_text(xE, yE + 10, text=round(BE.angle(BA)), fill='green')
-    '''cnv.create_line(xB, yB, xE, yE)
-    cnv.create_line(xF, yF, xE, yE)
-    cnv.create_line(xF, yF, xH, yH)'''
-
-    '''print('A:', A)
-    print('B:', B)
-    print('C:', C)
-    print('F:', F)
-    print('E:', E)
-    print('G:', G)
-    print('T =', T)
-    print('U =', U)
-    print('EF =', EF.norme)
-    print('EG =', Vect(xE, yE, xG, yG, 'vecteur').norme)
-    print('BE =', BE.norme)
-    print('BG =', BG_dist)
-    print('C =', 2*R*sin(pi - 2*teta))
-    print('C1=', Vect(xF, yF, xH, yH, 'vecteur').norme)'''
 
 
 def clothoide(a, b):
     global x
     global y
+    global x_sym
+    global y_sym
 
     global FE
     FE = Vect(xF, yF, xE, yE, 'vecteur')
@@ -268,27 +240,31 @@ def clothoide(a, b):
             angle_tangente = atan((y[-1] - y[-2]) / (x[-1] - x[-2]))  # arctan(dy/dx)
         w = w + 0.01
 
-    #symétrie
-    '''x_sym = []
-    y_sym = []
-    for i in range(len(x)-1):
-        xI = x[i]
-        yI = y[i]
-        print('xI:', xI, 'yI:', yI)
-        alpha = Vect(x[-1], y[-1], xI, yI, 'vecteur').angle(Vect(xE, yE, xB, yB, 'vecteur'))
-        print("alpha deg =", alpha)
-        alpha = alpha * 2 * pi / 360
+    # symétrie
+    x_sym = [i for i in x]
+    y_sym = [-i + 2 * y[-1] for i in y]
 
-        print("alpha =", alpha)
-        X = (xI - x[-1]) * cos(2*pi - 2 * alpha) - (yI - y[-1]) * sin(2*pi - 2 * alpha)
-        Y = (xI - x[-1]) * sin(2*pi - 2 * alpha) + (yI - y[-1]) * cos(2*pi - 2 * alpha)
-        x_sym.append(X + x[-1])
-        y_sym.append(Y + y[-1])'''
+    for i in range(0, len(x)-1):
+        angle_pro = Vect(x[-1], y[-1], x[-1], y[-1]+1, 'vecteur').angle(Vect(x[-1], y[-1], x_sym[i], y_sym[i], 'vecteur'))
+        angle_pro = angle_pro * 2 * pi / 360
+        norme = Vect(x[-1], y[-1], x_sym[i], y_sym[i], 'vecteur').norme
+        x_sym[i] = norme * cos(angle_pro - pi/2 + 2 * angle_tangente_final) + x[-1]
+        y_sym[i] = norme * sin(angle_pro - pi/2 + 2 * angle_tangente_final) + y[-1]
 
-    '''print('w =', w)
-    print('angle_tangente_final =', angle_tangente_final)
-    print('angle_tangente =', angle_tangente)'''
+    x.extend(x_sym)
+    y.extend(y_sym)
+
     affichage_clothoide(a, b)
+
+    X.append(x[0])
+    Y.append(y[0])
+    X.append(x[round(len(x)/2)])
+    Y.append(y[round(len(x)/2)])
+
+    if len(X) > 2:
+        print(X)
+        print(Y)
+        cnv.create_line(X[-3], Y[-3], X[-2], Y[-2])
 
 
 def affichage_clothoide(a, b):
@@ -300,14 +276,13 @@ def affichage_clothoide(a, b):
 
     xG, yG = BG.x + xB, BG.y + yB
     BG = Vect(xB, yB, xG, yG, 'vecteur')
-    coef = BG.norme * sin(teta) * 4
+    coef = BG.norme * sin(teta) / y[-1]
     for i in range(len(x)):
         x[i] = coef * x[i]
         y[i] = coef * y[i]
 
     # rotation d'angle phi, de la clothoide
     phi = Vect(xA, yA, xB, yB, 'vecteur').angle(Vect(xA, yA, xA + 1, yA, 'vecteur'))
-    '''print(phi)'''
     phi = phi * 2 * pi / 360
 
     for i in range(1, len(x)):
@@ -317,34 +292,14 @@ def affichage_clothoide(a, b):
         x[i] = norme * cos(a*angle_pro + b*phi)
         y[i] = norme * sin(a*angle_pro + b*phi)
 
-    '''plt.axis('equal')
-    plt.plot(x, y)
-    plt.show()'''
-
     # deplacement de la clothoide
 
     for i in range(0, len(x)):
         x[i] = x[i] + xG - x[-1]
         y[i] = yG - y[i] + y[-1]
-        if i > 1:
+        if i > 1 and i != len(x)/2:
             cnv.create_line(x[i-1], y[i-1], x[i], y[i])
-        cnv.create_text(0, 0, text='●')
-        cnv.create_text(10, 100, text='100y')
-        cnv.create_text(100, 10, text='100x')
-
-    '''plt.axis('equal')
-    plt.plot(x, y)
-    plt.show()'''
-
-
-def sur_droite(u, xX, yX, xI, yI):
-    a = u.y
-    b = -u.x
-    c = -a * xX -b * yX
-    if a*xI + b*yI + c == 0:
-        return True
-    else:
-        return False
+        cnv.create_line(x[round(len(x)/2 - 1)], y[round(len(x)/2)], x[round(len(x)/2 -1)], y[round(len(x)/2)])
 
 
 route = Tk()
@@ -352,6 +307,9 @@ route.title('Route')
 
 points_x = []
 points_y = []
+
+X = []
+Y =[]
 
 DIM = 600
 dist = 2
@@ -363,10 +321,6 @@ cnv.pack()
 Bouton1 = Canvas(route)
 Button(Bouton1, text="Effacer", command=clear, bg='red').pack()
 Bouton1.pack()
-
-Bouton2 = Canvas(route)
-Button(Bouton2, text="Clothoide", command=clothoide, bg='red').pack()
-Bouton2.pack()
 
 cnv.bind("<Button-1>", point)
 

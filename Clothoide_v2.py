@@ -30,7 +30,7 @@ def longueur_clothoide(liste1, liste2):
 
 
 
-ω = 1
+ω = 10
 
 w = np.arange(0,ω,0.01)
 
