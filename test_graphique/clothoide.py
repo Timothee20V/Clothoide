@@ -14,7 +14,7 @@ def point(A, B, C):
     BA = Vect(xB, yB, xC, yC, 'vecteur')
     BC = Vect(xB, yB, xA, yA, 'vecteur')
 
-    clothoide(BA, BC)
+    return clothoide(BA, BC)
 
 
 def clothoide(BA, BC):
@@ -231,6 +231,7 @@ def clothoide_unitaire(a, b):
 
     x, y = transformation_clothoide(a, b, x, y)
     x_sym, y_sym = transformation_clothoide(a, b, x_sym, y_sym)
+
     return x, y, x_sym, y_sym
 
 
