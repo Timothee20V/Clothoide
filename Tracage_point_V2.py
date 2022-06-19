@@ -250,7 +250,9 @@ def clothoide():
 
     clothoide_fct(xA, -yA, xB, -yB, xF, - yF, xE, -yE)
     """
+
     angle_tangente_final = (FE.angle(FH)) * (2 * pi) / 360 + pi / 2
+
     angle_tangente = 0
     x = []
     y = []
@@ -261,6 +263,7 @@ def clothoide():
         if len(x) > 1:
             angle_tangente = atan((y[-1] - y[-2]) / (x[-1] - x[-2]))
             print(angle_tangente)
+
         w = w + 0.01
     print('w =', w)
     print('angle_tangente_final =', angle_tangente_final)
@@ -268,9 +271,11 @@ def clothoide():
     plt.grid()
     plt.axis('equal')
     plt.title("Tracé de la clothoïde")
+
     plt.plot(x, y)
     plt.ylabel("S(ω)")
     plt.xlabel("C(ω)")
+
     plt.show()"""
 
 
