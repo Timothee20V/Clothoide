@@ -16,6 +16,8 @@ def point(event):
         bissectrice(BA, BC)
 
 
+
+
 def clear():
     cnv.delete(ALL)
     points_x.clear()
@@ -245,7 +247,7 @@ def clothoide(a, b):
     x.extend(x_sym)
     y.extend(y_sym)
 
-    affichage_clothoide(a, b)
+    transformation_clothoide(a, b)
 
     X.append(x[0])
     Y.append(y[0])
@@ -258,7 +260,7 @@ def clothoide(a, b):
         cnv.create_line(X[-3], Y[-3], X[-2], Y[-2])
 
 
-def affichage_clothoide(a, b):
+def transformation_clothoide(a, b):
     global xG, yG
 
     BE = Vect(xB, yB, xE, yE, 'vecteur')
