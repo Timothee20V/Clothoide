@@ -30,6 +30,14 @@ def clear():
 
 
 def bissectrice(BA, BC):
+    global xA, yA
+    global xB, yB
+    global xC, yC
+    global xE, yE
+    global xF, yF
+    global xG, yG
+    global xH, yH
+
     xA, yA = BA.x2, BA.y2
     xB, yB = BA.x1, BA.y1
     xC, yC = BC.x2, BC.y2
@@ -43,46 +51,60 @@ def bissectrice(BA, BC):
     T = R / tan(teta)  # Longueur BF
     U = R / sin(teta)  # Longueur BE
 
+    BF = BA * (T / BA.norme)    #Pts F
+    BH = BC * (T / BC.norme)    #Pts H
+
+    xF, yF = BF.x + xB, BF.y + yB
+    xH, yH = BH.x + xB, BH.y + yB
+
     # meme moitié
     if xA >= xB and xC >= xB and yA >= yB >= yC:
         print("1")
         angleF = angle_1 - angle_2
         xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB + sin(angleF * 2 * pi / 360) * U
+        clothoide(-1, 1)
 
     if xA >= xB and xC >= xB and yA <= yB <= yC:
         print("2")
         angleF = angle_1 - angle_2
         xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB - sin(angleF * 2 * pi / 360) * U
+        clothoide(1, -1)
 
     if xA <= xB and xC <= xB and yA <= yB <= yC:
         print("3")
         angleF = angle_1 + angle_2
         xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB - sin(angleF * 2 * pi / 360) * U
+        clothoide(-1, -1)
 
     if xA <= xB and xC <= xB and yA >= yB >= yC:
         print("4")
         angleF = angle_1 + angle_2
         xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB + sin(angleF * 2 * pi / 360) * U
+        clothoide(1, 1)
 
     if xA <= xB <= xC and yA <= yB and yC <= yB:
         print("5")
         angleF = angle_1 - angle_2
         xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB - sin(angleF * 2 * pi / 360) * U
+        clothoide(1, -1)
 
     if xA >= xB >= xC and yA <= yB and yC <= yB:
         print("6")
         angleF = angle_1 + angle_2
         xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB - sin(angleF * 2 * pi / 360) * U
+        clothoide(-1, -1)
 
     if xA <= xB <= xC and yA >= yB and yC >= yB:
         print("7")
         angleF = angle_1 - angle_2
         xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB + sin(angleF * 2 * pi / 360) * U
+        clothoide(-1, 1)
 
     if xA >= xB >= xC and yA >= yB and yC >= yB:
         print("8")
         angleF = angle_1 + angle_2
         xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB + sin(angleF * 2 * pi / 360) * U
+        clothoide(1, 1)
 
     # symétrique par rapport au centre
     if xA >= xB >= xC and yA > yB > yC:
@@ -91,10 +113,12 @@ def bissectrice(BA, BC):
             print("9.1")
             angleF = angle_1 + angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB + sin(angleF * 2 * pi / 360) * U
+            clothoide(1, 1)
         else:
             print("9.2")
             angleF = angle_1 - angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB + sin(angleF * 2 * pi / 360) * U
+            clothoide(-1, 1)
 
     if xA <= xB <= xC and yA < yB < yC:
         print("10")
@@ -102,10 +126,12 @@ def bissectrice(BA, BC):
             print("10.1")
             angleF = angle_1 + angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB - sin(angleF * 2 * pi / 360) * U
+            clothoide(-1, -1)
         else:
             print("10.2")
             angleF = angle_1 - angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB - sin(angleF * 2 * pi / 360) * U
+            clothoide(1, -1)
 
     if xA <= xB <= xC and yA > yB > yC:
         print("11")
@@ -113,10 +139,12 @@ def bissectrice(BA, BC):
             print("11.1")
             angleF = angle_1 + angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB + sin(angleF * 2 * pi / 360) * U
+            clothoide(1, 1)
         else:
             print("11.2")
             angleF = angle_1 - angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB + sin(angleF * 2 * pi / 360) * U
+            clothoide(-1, 1)
 
     if xA >= xB >= xC and yA < yB < yC:
         print("12")
@@ -124,10 +152,12 @@ def bissectrice(BA, BC):
             print("12.1")
             angleF = angle_1 + angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB - sin(angleF * 2 * pi / 360) * U
+            clothoide(-1, -1)
         else:
             print("12.2")
             angleF = angle_1 - angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB - sin(angleF * 2 * pi / 360) * U
+            clothoide(1, -1)
 
     # meme quart
     if xA > xB and xC > xB and yA > yB and yC > yB:
@@ -136,10 +166,12 @@ def bissectrice(BA, BC):
             print("13.1")
             angleF = angle_1 + angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB + sin(angleF * 2 * pi / 360) * U
+            clothoide(1, 1)
         else:
             print("13.2")
             angleF = angle_1 - angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB + sin(angleF * 2 * pi / 360) * U
+            clothoide(-1, 1)
 
     if xA < xB and xC < xB and yA > yB and yC > yB:
         print("14")
@@ -147,10 +179,12 @@ def bissectrice(BA, BC):
             print("14.1")
             angleF = angle_1 - angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB + sin(angleF * 2 * pi / 360) * U
+            clothoide(-1, 1)
         else:
             print("14.2")
             angleF = angle_1 + angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB + sin(angleF * 2 * pi / 360) * U
+            clothoide(1, 1)
 
     if xA < xB and xC < xB and yA < yB and yC < yB:
         print("15")
@@ -158,10 +192,12 @@ def bissectrice(BA, BC):
             print("15.1")
             angleF = angle_1 - angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB - sin(angleF * 2 * pi / 360) * U
+            clothoide(1, -1)
         else:
             print("15.2")
             angleF = angle_1 + angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB - sin(angleF * 2 * pi / 360) * U
+            clothoide(-1, -1)
 
     if xA > xB and xC > xB and yA < yB and yC < yB:
         print("16")
@@ -169,42 +205,23 @@ def bissectrice(BA, BC):
             print("16.1")
             angleF = angle_1 + angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB - sin(angleF * 2 * pi / 360) * U
+            clothoide(-1, -1)
         else:
             print("16.2")
             angleF = angle_1 - angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB - sin(angleF * 2 * pi / 360) * U
+            clothoide(1, -1)
 
-    BF = BA * (T / BA.norme)
-    BH = BC * (T / BC.norme)
+
     BE = Vect(xB, yB, xE, yE, 'vecteur')
     EF = Vect(xE, yE, BF.x + xB, BF.y + yB, 'vecteur')
 
     BG_dist = R / cos((pi - 2 * teta) / 2) - R  # Longueur BG
     BG = BE * (BG_dist / BE.norme)
 
-    xF, yF = BF.x + xB, BF.y + yB
+
     xG, yG = BG.x + xB, BG.y + yB
-    xH, yH = BH.x + xB, BH.y + yB
 
-    global A
-    global B
-    global C
-    global E
-    global F
-    global G
-
-    A = xA, yA
-    B = xB, yB
-    C = xC, yC
-    E = xE, yE
-    F = xF, yF
-    G = xG, yG
-    H = xH, yH
-
-    global FE
-    FE = Vect(xF, yF, xE, yE, 'vecteur')
-    global FH
-    FH = Vect(xF, yF, xH, yH, 'vecteur')
 
     cnv.create_text(xA, yA + 10, text='A')
     cnv.create_text(xB, yB + 10, text='B')
@@ -213,14 +230,14 @@ def bissectrice(BA, BC):
     cnv.create_text(xF, yF + 10, text='F')
     cnv.create_text(xG, yG + 10, text='G')
     cnv.create_text(xH, yH + 10, text='H')
-    cnv.create_text(E, text='●')
-    cnv.create_text(F, text='●')
-    cnv.create_text(G, text='●')
-    cnv.create_text(H, text='●')
+    cnv.create_text(xE, yE, text='●')
+    cnv.create_text(xF, yF, text='●')
+    cnv.create_text(xG, yG, text='●')
+    cnv.create_text(xH, yH, text='●')
     # cnv.create_text(xE, yE + 10, text=round(BE.angle(BA)), fill='green')
-    cnv.create_line(B, E)
-    cnv.create_line(F, E)
-    cnv.create_line(F, H)
+    '''cnv.create_line(xB, yB, xE, yE)
+    cnv.create_line(xF, yF, xE, yE)
+    cnv.create_line(xF, yF, xH, yH)'''
 
     '''print('A:', A)
     print('B:', B)
@@ -238,11 +255,14 @@ def bissectrice(BA, BC):
     print('C1=', Vect(xF, yF, xH, yH, 'vecteur').norme)'''
 
 
-def clothoide():
-    xE, yE = E
-    xB, yB = B
+def clothoide(a, b):
     global x
     global y
+
+    global FE
+    FE = Vect(xF, yF, xE, yE, 'vecteur')
+    global FH
+    FH = Vect(xF, yF, xH, yH, 'vecteur')
 
     angle_tangente_final = pi / 2 - (FE.angle(FH)) * (2 * pi) / 360
 
@@ -256,6 +276,10 @@ def clothoide():
         if len(x) > 1:
             angle_tangente = atan((y[-1] - y[-2]) / (x[-1] - x[-2]))  # arctan(dy/dx)
         w = w + 0.01
+    y = [i*(1) for i in y]
+
+
+
 
     #symétrie
     '''x_sym = []
@@ -274,19 +298,17 @@ def clothoide():
         x_sym.append(X + x[-1])
         y_sym.append(Y + y[-1])'''
 
-    print('w =', w)
+    '''print('w =', w)
     print('angle_tangente_final =', angle_tangente_final)
-    print('angle_tangente =', angle_tangente)
-    affichage_clothoide()
+    print('angle_tangente =', angle_tangente)'''
+    affichage_clothoide(a, b)
 
 
-def affichage_clothoide():
-    xA, yA = A
-    xB, yB = B
+def affichage_clothoide(a, b):
 
     # rotation d'angle phi, de la clothoide
     phi = Vect(xA, yA, xB, yB, 'vecteur').angle(Vect(xA, yA, xA + 1, yA, 'vecteur'))
-    print(phi)
+    '''print(phi)'''
     phi = phi * 2 * pi / 360
 
     for i in range(1, len(x)):
@@ -295,9 +317,14 @@ def affichage_clothoide():
         angle_pro = Vect(0, 0, 1, 0, 'vecteur').angle(Vect(0, 0, xI, yI, 'vecteur'))
         angle_pro = angle_pro * 2 * pi / 360
         norme = Vect(0, 0, xI, yI, 'vecteur').norme
-        x[i] = norme * cos(angle_pro + phi)
-        y[i] = norme * sin(angle_pro + phi)
+        x[i] = norme * cos(a*angle_pro + b*phi)
+        y[i] = norme * sin(a*angle_pro + b*phi)
 
+
+
+    '''plt.axis('equal')
+    plt.plot(x, y)
+    plt.show()'''
 
 
     # deplacement de la clothoide
@@ -310,6 +337,10 @@ def affichage_clothoide():
         cnv.create_text(0, 0, text='●')
         cnv.create_text(10, 100, text='100y')
         cnv.create_text(100, 10, text='100x')
+
+    '''plt.axis('equal')
+    plt.plot(x, y)
+    plt.show()'''
 
 route = Tk()
 route.title('Route')
