@@ -43,6 +43,10 @@ class Game:
         elif pressed[pygame.K_d]:
             #droite
             self.camera.move_right()
+        elif pressed[pygame.K_r]:
+            self.car.rotation(3, self.screen)
+
+
 
     def run(self):
 

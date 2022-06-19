@@ -32,5 +32,5 @@ class Vect:
 
     def changement_base(self, other1, other2):
         if (self.genre and other1.genre and other2.genre) == 'vecteur':
-            alpha = angle(other1, Vect(0,0,1,0,'vecteur'))
+            alpha = other1.angle(Vect(0,0,1,0,'vecteur'))
             print(alpha)
