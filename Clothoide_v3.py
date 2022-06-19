@@ -3,13 +3,9 @@ from math import *
 from Vecteurs_test import *
 
 plt.title("Clothoïde")
-def angle(xa,ya,xb,yb,xc,yc):
-    V1=Vect(xa,ya,xb,yb,"vecteur")
-    V2=Vect(xb,yb,xc,yc,"vecteur")
-    return V1.angle(V2)
 
 #changement de base
-def changement(xa,ya,xb,yb,xf,yf,xe,ye):
+def changement(xa,ya,xb,yb,xf,yf,xe,ye): """on change la base de la clothoïde"""
     x1x=xf-xa
     x1y=yf-ya
     x1x=x1x/(sqrt((xf-xa)**2+(yf-ya)**2))
@@ -20,7 +16,7 @@ def changement(xa,ya,xb,yb,xf,yf,xe,ye):
     y1y=y1y / (sqrt((xe - xf) ** 2 + (ye - yf) ** 2))
     return(x1x,x1y,y1x,y1y)
 
-def clothoide_fct(xa,ya,xb,yb,xf,yf,xe,ye):
+def clothoide_fct(xa,ya,xb,yb,xf,yf,xe,ye):"""on trace la clothoîde dans la nouvelle base"""
     x1x,x1y,y1x,y1y=changement(xa,ya,xb,yb,xf,yf,xe,ye)
     phi=0
     x2=[xa,xf]
@@ -28,7 +24,7 @@ def clothoide_fct(xa,ya,xb,yb,xf,yf,xe,ye):
 
     #la liste dees points
     L = sqrt((xa - xf) ** 2 + (ya - yf) ** 2)
-    C = L/2
+    C = L*10
     i=1
 
     #longueur du premier pan de courbe
@@ -50,7 +46,8 @@ def clothoide_fct(xa,ya,xb,yb,xf,yf,xe,ye):
     i = i + 1
     if xb!=xe:
         #xb=xe entraine un division par 0
-        while ((x2[-1]-xe)*(yb-ye)/abs(xb-xe)-y2[-1]+ye)*((x2[-2]-xe)*(yb-ye)/abs(xb-xe)-y2[-2]+ye)>0:
+        """while ((x2[-1]-xe)*(yb-ye)/abs(xb-xe)-y2[-1]+ye)*((x2[-2]-xe)*(yb-ye)/abs(xb-xe)-y2[-2]+ye)>0:"""
+        while phi<3.14/2:
 
             print(angle(xb, yb, x2[-1], y2[-1], xe, ye))
 
@@ -63,7 +60,7 @@ def clothoide_fct(xa,ya,xb,yb,xf,yf,xe,ye):
             i=i+1
 
 
-    elif xb==xe:
+    if xb==xe:
         while x2[-1]*x2[-2]>0:
             # on vérifie que ce pan de droite ne traverse pas BE
 
