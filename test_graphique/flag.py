@@ -1,5 +1,9 @@
 import pygame
 
+'''class flag qui sert à indiquer ou l'utilisateur à placer les points de sa route
+definit de la même maniere que la camera sauf que le drapeau n'est pas invisible et ne se deplace pas
+'''
+
 
 class flag(pygame.sprite.Sprite):
 

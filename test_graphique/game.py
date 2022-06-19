@@ -11,7 +11,10 @@ from test_graphique.flag import flag
 
 
 class Game:
-
+    '''initialisation des variable de la class game, création de la fenêtre lecture de la carte pour le background
+    generation des objets issuent des imports de camera , flag , road
+    Recuperation des bordures 'collision' de la carte dans le fichier tmx pour eviter que la camera ou d'autre objet
+    sortent de la carte. Creation du groupe de layer et ajout de la camera '''
     def __init__(self):
         '''fenetre du jeu'''
         pygame.display.set_caption("Construction de routes")
@@ -42,6 +45,10 @@ class Game:
         #retirer : self.group.add(self.car)
         self.group.add(self.camera)
 
+    '''foction qui detecte l'appuis des touches du claviers et y attribue une action 
+     zqsd pour le deplacement de la camera en mode zoom 
+     pose des drapeaux en mode dezoom
+    utilisation du numpad + et - pour zommer dezoomer'''
     def handle_imput(self):
         pressed = pygame.key.get_pressed()
 
@@ -72,6 +79,8 @@ class Game:
             '''zoom de la carte'''
             self.map_layer.zoom = 2
 
+    '''fonction qui rafraichit le groupe layer fondamentale pour le deplacement de la cammera et les collisions pour
+    eviter que la camera sorte de la carte'''
     def update(self):
         self.group.update()
 
@@ -80,6 +89,9 @@ class Game:
             if sprite.hitbox.collidelist(self.walls) > -1:
                 sprite.move_back()
 
+    '''boucle principale du programme qui va tournée en boucle jusqua la fermeture de la fenêtre 
+    limiter par une orloge qui fix le nombre de rafraichisment par seconde ici 60 
+    '''
     def run(self):
         '''orloge'''
         clock = pygame.time.Clock()

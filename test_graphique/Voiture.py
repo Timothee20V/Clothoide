@@ -1,7 +1,5 @@
 import pygame
-import pytmx
-import pyscroll
-
+'''class voiture qui à été abandonnée en raison de rotation qui desintegre l'image de la voiture'''
 
 class Car(pygame.sprite.Sprite):
 
