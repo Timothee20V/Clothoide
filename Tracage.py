@@ -1,8 +1,8 @@
 from tkinter import *
 from math import *
-from Vecteurs_test import *
+from Vecteurs import *
 from Clothoide_v2 import *
-from Clothoide_v3 import *
+from Clothoide import *
 
 
 def point(event):
