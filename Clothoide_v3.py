@@ -49,7 +49,7 @@ def clothoide_fct(xa,ya,xb,yb,xf,yf,xe,ye):"""on trace la clothoîde dans la nou
         """while ((x2[-1]-xe)*(yb-ye)/abs(xb-xe)-y2[-1]+ye)*((x2[-2]-xe)*(yb-ye)/abs(xb-xe)-y2[-2]+ye)>0:"""
         while phi<3.14/2:
 
-            print(angle(xb, yb, x2[-1], y2[-1], xe, ye))
+
 
 #on vérifie que ce pan de droite ne traverse pas BE
 
@@ -66,17 +66,12 @@ def clothoide_fct(xa,ya,xb,yb,xf,yf,xe,ye):"""on trace la clothoîde dans la nou
 
             L = L + C
             phi = phi + L / C ** 2
-            x2.append(x2[i] + cos(phi) * C * x1x + sin(phi) * C * y1x)
-            y2.append(y2[i] + sin(phi) * C * y1y + cos(phi) * C * x1y)
+            x2.append(x2[i] - cos(phi) * C * x1x + sin(phi) * C * y1x)
+            y2.append(y2[i] + sin(phi) * C * y1y - cos(phi) * C * x1y)
             i = i + 1
 
 
 
-    """#la symétrie
-    l=len(x2)
-    for  i in range(1,l-2):
-        x2.append(2*xe-x2[l-i])
-        y2.append(2*ye-y2[l-i])"""
 
     plt.plot(x2, y2, '-0', color='red')
 
@@ -87,10 +82,4 @@ def clothoide_fct(xa,ya,xb,yb,xf,yf,xe,ye):"""on trace la clothoîde dans la nou
 
 
 
-"""
-x2.reverse()
-y2.reverse()
-"""
-"""for k in range(len (x1)):
-    x2.append(x1[k])
-    y2.append(y1[k])"""
+
