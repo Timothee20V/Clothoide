@@ -13,9 +13,8 @@ def point(event):
     if len(points_x) > 2:
         BA = Vect(points_x[-2], points_y[-2], points_x[-3], points_y[-3], 'vecteur')
         BC = Vect(points_x[-2], points_y[-2], points_x[-1], points_y[-1], 'vecteur')
-        bissectrice(BA, BC)
 
-
+        clothoide(BA, BC)
 
 
 def clear():
@@ -26,7 +25,7 @@ def clear():
     Y.clear()
 
 
-def bissectrice(BA, BC):
+def clothoide(BA, BC):
     global xA, yA
     global xB, yB
     global xC, yC
@@ -59,49 +58,49 @@ def bissectrice(BA, BC):
         print("1")
         angleF = angle_1 - angle_2
         xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB + sin(angleF * 2 * pi / 360) * U
-        clothoide(-1, 1)
+        clothoide_unitaire(-1, 1)
 
     if xA >= xB and xC >= xB and yA <= yB <= yC:
         print("2")
         angleF = angle_1 - angle_2
         xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB - sin(angleF * 2 * pi / 360) * U
-        clothoide(1, -1)
+        clothoide_unitaire(1, -1)
 
     if xA <= xB and xC <= xB and yA <= yB <= yC:
         print("3")
         angleF = angle_1 + angle_2
         xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB - sin(angleF * 2 * pi / 360) * U
-        clothoide(-1, -1)
+        clothoide_unitaire(-1, -1)
 
     if xA <= xB and xC <= xB and yA >= yB >= yC:
         print("4")
         angleF = angle_1 + angle_2
         xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB + sin(angleF * 2 * pi / 360) * U
-        clothoide(1, 1)
+        clothoide_unitaire(1, 1)
 
     if xA <= xB <= xC and yA <= yB and yC <= yB:
         print("5")
         angleF = angle_1 - angle_2
         xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB - sin(angleF * 2 * pi / 360) * U
-        clothoide(1, -1)
+        clothoide_unitaire(1, -1)
 
     if xA >= xB >= xC and yA <= yB and yC <= yB:
         print("6")
         angleF = angle_1 + angle_2
         xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB - sin(angleF * 2 * pi / 360) * U
-        clothoide(-1, -1)
+        clothoide_unitaire(-1, -1)
 
     if xA <= xB <= xC and yA >= yB and yC >= yB:
         print("7")
         angleF = angle_1 - angle_2
         xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB + sin(angleF * 2 * pi / 360) * U
-        clothoide(-1, 1)
+        clothoide_unitaire(-1, 1)
 
     if xA >= xB >= xC and yA >= yB and yC >= yB:
         print("8")
         angleF = angle_1 + angle_2
         xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB + sin(angleF * 2 * pi / 360) * U
-        clothoide(1, 1)
+        clothoide_unitaire(1, 1)
 
     # symétrique par rapport au centre
     if xA >= xB >= xC and yA > yB > yC:
@@ -110,12 +109,12 @@ def bissectrice(BA, BC):
             print("9.1")
             angleF = angle_1 + angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB + sin(angleF * 2 * pi / 360) * U
-            clothoide(1, 1)
+            clothoide_unitaire(1, 1)
         else:
             print("9.2")
             angleF = angle_1 - angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB + sin(angleF * 2 * pi / 360) * U
-            clothoide(-1, 1)
+            clothoide_unitaire(-1, 1)
 
     if xA <= xB <= xC and yA < yB < yC:
         print("10")
@@ -123,12 +122,12 @@ def bissectrice(BA, BC):
             print("10.1")
             angleF = angle_1 + angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB - sin(angleF * 2 * pi / 360) * U
-            clothoide(-1, -1)
+            clothoide_unitaire(-1, -1)
         else:
             print("10.2")
             angleF = angle_1 - angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB - sin(angleF * 2 * pi / 360) * U
-            clothoide(1, -1)
+            clothoide_unitaire(1, -1)
 
     if xA <= xB <= xC and yA > yB > yC:
         print("11")
@@ -136,12 +135,12 @@ def bissectrice(BA, BC):
             print("11.1")
             angleF = angle_1 + angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB + sin(angleF * 2 * pi / 360) * U
-            clothoide(1, 1)
+            clothoide_unitaire(1, 1)
         else:
             print("11.2")
             angleF = angle_1 - angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB + sin(angleF * 2 * pi / 360) * U
-            clothoide(-1, 1)
+            clothoide_unitaire(-1, 1)
 
     if xA >= xB >= xC and yA < yB < yC:
         print("12")
@@ -149,12 +148,12 @@ def bissectrice(BA, BC):
             print("12.1")
             angleF = angle_1 + angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB - sin(angleF * 2 * pi / 360) * U
-            clothoide(-1, -1)
+            clothoide_unitaire(-1, -1)
         else:
             print("12.2")
             angleF = angle_1 - angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB - sin(angleF * 2 * pi / 360) * U
-            clothoide(1, -1)
+            clothoide_unitaire(1, -1)
 
     # meme quart
     if xA > xB and xC > xB and yA > yB and yC > yB:
@@ -163,12 +162,12 @@ def bissectrice(BA, BC):
             print("13.1")
             angleF = angle_1 + angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB + sin(angleF * 2 * pi / 360) * U
-            clothoide(1, 1)
+            clothoide_unitaire(1, 1)
         else:
             print("13.2")
             angleF = angle_1 - angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB + sin(angleF * 2 * pi / 360) * U
-            clothoide(-1, 1)
+            clothoide_unitaire(-1, 1)
 
     if xA < xB and xC < xB and yA > yB and yC > yB:
         print("14")
@@ -176,12 +175,12 @@ def bissectrice(BA, BC):
             print("14.1")
             angleF = angle_1 - angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB + sin(angleF * 2 * pi / 360) * U
-            clothoide(-1, 1)
+            clothoide_unitaire(-1, 1)
         else:
             print("14.2")
             angleF = angle_1 + angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB + sin(angleF * 2 * pi / 360) * U
-            clothoide(1, 1)
+            clothoide_unitaire(1, 1)
 
     if xA < xB and xC < xB and yA < yB and yC < yB:
         print("15")
@@ -189,12 +188,12 @@ def bissectrice(BA, BC):
             print("15.1")
             angleF = angle_1 - angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB - sin(angleF * 2 * pi / 360) * U
-            clothoide(1, -1)
+            clothoide_unitaire(1, -1)
         else:
             print("15.2")
             angleF = angle_1 + angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB - sin(angleF * 2 * pi / 360) * U
-            clothoide(-1, -1)
+            clothoide_unitaire(-1, -1)
 
     if xA > xB and xC > xB and yA < yB and yC < yB:
         print("16")
@@ -202,22 +201,16 @@ def bissectrice(BA, BC):
             print("16.1")
             angleF = angle_1 + angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB - sin(angleF * 2 * pi / 360) * U
-            clothoide(-1, -1)
+            clothoide_unitaire(-1, -1)
         else:
             print("16.2")
             angleF = angle_1 - angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB - sin(angleF * 2 * pi / 360) * U
-            clothoide(1, -1)
+            clothoide_unitaire(1, -1)
 
-def clothoide(a, b):
-    global x
-    global y
-    global x_sym
-    global y_sym
 
-    global FE
+def clothoide_unitaire(a, b):
     FE = Vect(xF, yF, xE, yE, 'vecteur')
-    global FH
     FH = Vect(xF, yF, xH, yH, 'vecteur')
 
     angle_tangente_final = pi / 2 - (FE.angle(FH)) * (2 * pi) / 360
@@ -229,6 +222,7 @@ def clothoide(a, b):
     while angle_tangente < angle_tangente_final:
         x.append(integ(w))
         y.append(integ2(w))
+
         if len(x) > 1:
             angle_tangente = atan((y[-1] - y[-2]) / (x[-1] - x[-2]))  # arctan(dy/dx)
         w = w + 0.01
@@ -247,7 +241,7 @@ def clothoide(a, b):
     x.extend(x_sym)
     y.extend(y_sym)
 
-    transformation_clothoide(a, b)
+    x, y = transformation_clothoide(a, b, x, y)
 
     X.append(x[0])
     Y.append(y[0])
@@ -255,12 +249,10 @@ def clothoide(a, b):
     Y.append(y[round(len(x)/2)])
 
     if len(X) > 2:
-        print(X)
-        print(Y)
         cnv.create_line(X[-3], Y[-3], X[-2], Y[-2])
 
 
-def transformation_clothoide(a, b):
+def transformation_clothoide(a, b, x, y):
     global xG, yG
 
     BE = Vect(xB, yB, xE, yE, 'vecteur')
@@ -269,6 +261,8 @@ def transformation_clothoide(a, b):
 
     xG, yG = BG.x + xB, BG.y + yB
     BG = Vect(xB, yB, xG, yG, 'vecteur')
+
+    # dimension de la clothoide
     coef = BG.norme * sin(teta) / y[-1]
     for i in range(len(x)):
         x[i] = coef * x[i]
@@ -294,6 +288,8 @@ def transformation_clothoide(a, b):
             cnv.create_line(x[i-1], y[i-1], x[i], y[i])
         cnv.create_line(x[round(len(x)/2 - 1)], y[round(len(x)/2)], x[round(len(x)/2 -1)], y[round(len(x)/2)])
 
+    return x, y
+
 
 route = Tk()
 route.title('Route')
@@ -302,7 +298,7 @@ points_x = []
 points_y = []
 
 X = []
-Y =[]
+Y = []
 
 DIM = 600
 R = 30

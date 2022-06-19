@@ -50,49 +50,49 @@ def clothoide(BA, BC):
         print("1")
         angleF = angle_1 - angle_2
         xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB + sin(angleF * 2 * pi / 360) * U
-        clothoide_unitaire(-1, 1)
+        x,y,x_sym,y_sym = clothoide_unitaire(-1, 1)
 
     if xA >= xB and xC >= xB and yA <= yB <= yC:
         print("2")
         angleF = angle_1 - angle_2
         xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB - sin(angleF * 2 * pi / 360) * U
-        clothoide_unitaire(1, -1)
+        x,y,x_sym,y_sym = clothoide_unitaire(1, -1)
 
     if xA <= xB and xC <= xB and yA <= yB <= yC:
         print("3")
         angleF = angle_1 + angle_2
         xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB - sin(angleF * 2 * pi / 360) * U
-        clothoide_unitaire(-1, -1)
+        x,y,x_sym,y_sym = clothoide_unitaire(-1, -1)
 
     if xA <= xB and xC <= xB and yA >= yB >= yC:
         print("4")
         angleF = angle_1 + angle_2
         xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB + sin(angleF * 2 * pi / 360) * U
-        clothoide_unitaire(1, 1)
+        x,y,x_sym,y_sym = clothoide_unitaire(1, 1)
 
     if xA <= xB <= xC and yA <= yB and yC <= yB:
         print("5")
         angleF = angle_1 - angle_2
         xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB - sin(angleF * 2 * pi / 360) * U
-        clothoide_unitaire(1, -1)
+        x,y,x_sym,y_sym = clothoide_unitaire(1, -1)
 
     if xA >= xB >= xC and yA <= yB and yC <= yB:
         print("6")
         angleF = angle_1 + angle_2
         xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB - sin(angleF * 2 * pi / 360) * U
-        clothoide_unitaire(-1, -1)
+        x,y,x_sym,y_sym = clothoide_unitaire(-1, -1)
 
     if xA <= xB <= xC and yA >= yB and yC >= yB:
         print("7")
         angleF = angle_1 - angle_2
         xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB + sin(angleF * 2 * pi / 360) * U
-        clothoide_unitaire(-1, 1)
+        x,y,x_sym,y_sym = clothoide_unitaire(-1, 1)
 
     if xA >= xB >= xC and yA >= yB and yC >= yB:
         print("8")
         angleF = angle_1 + angle_2
         xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB + sin(angleF * 2 * pi / 360) * U
-        clothoide_unitaire(1, 1)
+        x,y,x_sym,y_sym = clothoide_unitaire(1, 1)
 
     # symétrique par rapport au centre
     if xA >= xB >= xC and yA > yB > yC:
@@ -101,12 +101,12 @@ def clothoide(BA, BC):
             print("9.1")
             angleF = angle_1 + angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB + sin(angleF * 2 * pi / 360) * U
-            clothoide_unitaire(1, 1)
+            x,y,x_sym,y_sym = clothoide_unitaire(1, 1)
         else:
             print("9.2")
             angleF = angle_1 - angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB + sin(angleF * 2 * pi / 360) * U
-            clothoide_unitaire(-1, 1)
+            x,y,x_sym,y_sym = clothoide_unitaire(-1, 1)
 
     if xA <= xB <= xC and yA < yB < yC:
         print("10")
@@ -114,12 +114,12 @@ def clothoide(BA, BC):
             print("10.1")
             angleF = angle_1 + angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB - sin(angleF * 2 * pi / 360) * U
-            clothoide_unitaire(-1, -1)
+            x,y,x_sym,y_sym = clothoide_unitaire(-1, -1)
         else:
             print("10.2")
             angleF = angle_1 - angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB - sin(angleF * 2 * pi / 360) * U
-            clothoide_unitaire(1, -1)
+            x,y,x_sym,y_sym = clothoide_unitaire(1, -1)
 
     if xA <= xB <= xC and yA > yB > yC:
         print("11")
@@ -127,12 +127,12 @@ def clothoide(BA, BC):
             print("11.1")
             angleF = angle_1 + angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB + sin(angleF * 2 * pi / 360) * U
-            clothoide_unitaire(1, 1)
+            x,y,x_sym,y_sym = clothoide_unitaire(1, 1)
         else:
             print("11.2")
             angleF = angle_1 - angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB + sin(angleF * 2 * pi / 360) * U
-            clothoide_unitaire(-1, 1)
+            x,y,x_sym,y_sym = clothoide_unitaire(-1, 1)
 
     if xA >= xB >= xC and yA < yB < yC:
         print("12")
@@ -140,12 +140,12 @@ def clothoide(BA, BC):
             print("12.1")
             angleF = angle_1 + angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB - sin(angleF * 2 * pi / 360) * U
-            clothoide_unitaire(-1, -1)
+            x,y,x_sym,y_sym = clothoide_unitaire(-1, -1)
         else:
             print("12.2")
             angleF = angle_1 - angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB - sin(angleF * 2 * pi / 360) * U
-            clothoide_unitaire(1, -1)
+            x,y,x_sym,y_sym = clothoide_unitaire(1, -1)
 
     # meme quart
     if xA > xB and xC > xB and yA > yB and yC > yB:
@@ -154,12 +154,12 @@ def clothoide(BA, BC):
             print("13.1")
             angleF = angle_1 + angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB + sin(angleF * 2 * pi / 360) * U
-            clothoide_unitaire(1, 1)
+            x,y,x_sym,y_sym = clothoide_unitaire(1, 1)
         else:
             print("13.2")
             angleF = angle_1 - angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB + sin(angleF * 2 * pi / 360) * U
-            clothoide_unitaire(-1, 1)
+            x,y,x_sym,y_sym = clothoide_unitaire(-1, 1)
 
     if xA < xB and xC < xB and yA > yB and yC > yB:
         print("14")
@@ -167,12 +167,12 @@ def clothoide(BA, BC):
             print("14.1")
             angleF = angle_1 - angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB + sin(angleF * 2 * pi / 360) * U
-            clothoide_unitaire(-1, 1)
+            x,y,x_sym,y_sym = clothoide_unitaire(-1, 1)
         else:
             print("14.2")
             angleF = angle_1 + angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB + sin(angleF * 2 * pi / 360) * U
-            clothoide_unitaire(1, 1)
+            x,y,x_sym,y_sym = clothoide_unitaire(1, 1)
 
     if xA < xB and xC < xB and yA < yB and yC < yB:
         print("15")
@@ -180,12 +180,12 @@ def clothoide(BA, BC):
             print("15.1")
             angleF = angle_1 - angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB - sin(angleF * 2 * pi / 360) * U
-            clothoide_unitaire(1, -1)
+            x,y,x_sym,y_sym = clothoide_unitaire(1, -1)
         else:
             print("15.2")
             angleF = angle_1 + angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB - sin(angleF * 2 * pi / 360) * U
-            clothoide_unitaire(-1, -1)
+            x,y,x_sym,y_sym = clothoide_unitaire(-1, -1)
 
     if xA > xB and xC > xB and yA < yB and yC < yB:
         print("16")
@@ -193,12 +193,14 @@ def clothoide(BA, BC):
             print("16.1")
             angleF = angle_1 + angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB - sin(angleF * 2 * pi / 360) * U
-            clothoide_unitaire(-1, -1)
+            x,y,x_sym,y_sym = clothoide_unitaire(-1, -1)
         else:
             print("16.2")
             angleF = angle_1 - angle_2
             xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB - sin(angleF * 2 * pi / 360) * U
-            clothoide_unitaire(1, -1)
+            x,y,x_sym,y_sym = clothoide_unitaire(1, -1)
+
+    return x, y, x_sym, y_sym
 
 
 def clothoide_unitaire(a, b):
