@@ -30,7 +30,3 @@ class Vect:
             angle_deg = 360 * angle_rad / (2 * pi)
             return angle_deg
 
-    def changement_base(self, other1, other2):
-        if (self.genre and other1.genre and other2.genre) == 'vecteur':
-            alpha = other1.angle(Vect(0,0,1,0,'vecteur'))
-            print(alpha)

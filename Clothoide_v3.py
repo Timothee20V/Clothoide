@@ -47,13 +47,12 @@ def clothoide_fct(xa,ya,xb,xf,yf,xe,ye):
     i = i + 1
     nb=3
     if xb!=xe:
-        #xb=xe entraine un division par 0
-        """while ((x2[-1]-xe)*(yb-ye)/abs(xb-xe)-y2[-1]+ye)*((x2[-2]-xe)*(yb-ye)/abs(xb-xe)-y2[-2]+ye)>0:"""
+
         while phi<3.14/2:
 
 
 
-#on vérifie que ce pan de droite ne traverse pas BE
+
 
             L = L + C
             phi = phi + L / C ** 2
@@ -62,15 +61,7 @@ def clothoide_fct(xa,ya,xb,xf,yf,xe,ye):
             i=i+1
             nb+=1
 
-    if xb==xe:
-        while (x2[-1]-xb)*(x2[-2]-xb)>0:
-            # on vérifie que ce pan de droite ne traverse pas BE
 
-            L = L + C
-            phi = phi + L / C ** 2
-            x2.append(x2[i] - cos(phi) * C * x1x + sin(phi) * C * y1x)
-            y2.append(y2[i] + sin(phi) * C * y1y - cos(phi) * C * x1y)
-            i = i + 1
 
 
     x2.reverse()
