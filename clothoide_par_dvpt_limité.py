@@ -34,7 +34,7 @@ precision_du_devpt_limité = 115
 '''coefficient A regle la taille de la clothoide '''
 A = 1
 
-
+'''création de tout les points de la liste'''
 for i in range(len(w)):
     liste_x1.append(dvpt_limite_de_x(w[i], precision_du_devpt_limité))
     liste_y.append(dvpt_limite_de_y(w[i], precision_du_devpt_limité))

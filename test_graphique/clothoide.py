@@ -201,7 +201,7 @@ def clothoide(BA, BC):
             x,y,x_sym,y_sym = clothoide_unitaire(1, -1)
 
     return x, y, x_sym, y_sym
-
+    return x
 
 def clothoide_unitaire(a, b):
     FE = Vect(xF, yF, xE, yE, 'vecteur')

@@ -78,6 +78,19 @@ class Game:
         elif pressed[pygame.K_KP_PLUS]:
             '''zoom de la carte'''
             self.map_layer.zoom = 2
+        elif pressed[pygame.K_c]:
+            '''créer la route avec 3 drapeau poser'''
+            x_clotho_1, y_clotho_1, x_clotho_2, y_clotho_2 = self.road.create_clothoid_road()
+            for i in range(len(x_clotho_1) - 1):
+                pygame.draw.line(self.screen, (0, 0, 255), (x_clotho_1[i], y_clotho_1[i]),
+                                 (x_clotho_1[i + 1], y_clotho_1[i + 1]), width=3)
+            for i in range(len(x_clotho_2) - 1):
+                pygame.draw.line(self.screen, (255, 0, 255), (x_clotho_2[i], y_clotho_2[i]),
+                                 (x_clotho_2[i + 1], y_clotho_2[i + 1]), width=3)
+            pygame.draw.line(self.screen, (255, 255, 255), (0, 0),
+                             (500, 500), width=3)
+            pygame.time.wait(100)
+
 
     '''fonction qui rafraichit le groupe layer fondamentale pour le deplacement de la cammera et les collisions pour
     eviter que la camera sorte de la carte'''

@@ -1,6 +1,6 @@
 import pygame
 
-
+from test_graphique.clothoide import *
 
 class road:
 
@@ -12,8 +12,6 @@ class road:
         self.flag_coord.append(y)
 
     def create_clothoid_road(self):
-        pass
+        return point((self.flag_coord[0],self.flag_coord[1]),(self.flag_coord[2],self.flag_coord[3]),(self.flag_coord[4],self.flag_coord[5]))
 
-    def create_straight_road(self):
-        pass
 
