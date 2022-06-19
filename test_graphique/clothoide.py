@@ -208,8 +208,6 @@ def bissectrice(BA, BC):
             clothoide(1, -1)
 
 
-
-
 def clothoide(a, b):
     global x
     global y
@@ -308,10 +306,5 @@ Y =[]
 
 R = 100
 
-
-
-Bouton1 = Canvas(route)
-Button(Bouton1, text="Effacer", command=clear, bg='red').pack()
-Bouton1.pack()
 
 
