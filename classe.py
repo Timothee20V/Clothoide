@@ -1,6 +1,7 @@
 from math import*
 
 
+
 class cloto:
     def __init__(self,V,p1x,p1y,p2x,p2y,p3x,p3y):
         self.V=V
