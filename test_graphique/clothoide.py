@@ -9,8 +9,7 @@ def point(event):
     points_x.append(x)
     points_y.append(y)
 
-    cnv.create_text(points_x[-1], points_y[-1], text='●')
-    # cnv.create_text(points_x[-1], points_y[-1] + 10, text=len(points_x))
+    #cnv.create_text(points_x[-1], points_y[-1], text='●')
 
     '''if len(points_x) > 1:
         cnv.create_line(points_x[-2], points_y[-2], points_x[-1], points_y[-1])'''
@@ -256,7 +255,7 @@ def clothoide(a, b):
     if len(X) > 2:
         print(X)
         print(Y)
-        cnv.create_line(X[-3], Y[-3], X[-2], Y[-2])
+        #cnv.create_line(X[-3], Y[-3], X[-2], Y[-2])
 
 
 def affichage_clothoide(a, b):
@@ -290,12 +289,12 @@ def affichage_clothoide(a, b):
         x[i] = x[i] + xG - x[-1]
         y[i] = yG - y[i] + y[-1]
         if i > 1 and i != len(x)/2:
-            cnv.create_line(x[i-1], y[i-1], x[i], y[i])
-        cnv.create_line(x[round(len(x)/2 - 1)], y[round(len(x)/2)], x[round(len(x)/2 -1)], y[round(len(x)/2)])
+            pass
+            #cnv.create_line(x[i-1], y[i-1], x[i], y[i])
+        #cnv.create_line(x[round(len(x)/2 - 1)], y[round(len(x)/2)], x[round(len(x)/2 -1)], y[round(len(x)/2)])
 
 
-route = Tk()
-route.title('Route')
+
 
 points_x = []
 points_y = []
