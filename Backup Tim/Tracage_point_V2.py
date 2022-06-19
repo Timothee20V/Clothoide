@@ -212,12 +212,7 @@ def bissectrice(BA, BC):
             xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB - sin(angleF * 2 * pi / 360) * U
             clothoide(1, -1)
 
-
-
     EF = Vect(xE, yE, BF.x + xB, BF.y + yB, 'vecteur')
-
-
-
 
     cnv.create_text(xA, yA + 10, text='A')
     cnv.create_text(xB, yB + 10, text='B')
@@ -273,10 +268,6 @@ def clothoide(a, b):
             angle_tangente = atan((y[-1] - y[-2]) / (x[-1] - x[-2]))  # arctan(dy/dx)
         w = w + 0.01
 
-
-
-
-
     #symétrie
     '''x_sym = []
     y_sym = []
@@ -326,16 +317,11 @@ def affichage_clothoide(a, b):
         x[i] = norme * cos(a*angle_pro + b*phi)
         y[i] = norme * sin(a*angle_pro + b*phi)
 
-
-
     '''plt.axis('equal')
     plt.plot(x, y)
     plt.show()'''
 
-
     # deplacement de la clothoide
-
-
 
     for i in range(0, len(x)):
         x[i] = x[i] + xG - x[-1]
@@ -345,7 +331,6 @@ def affichage_clothoide(a, b):
         cnv.create_text(0, 0, text='●')
         cnv.create_text(10, 100, text='100y')
         cnv.create_text(100, 10, text='100x')
-
 
     '''plt.axis('equal')
     plt.plot(x, y)
