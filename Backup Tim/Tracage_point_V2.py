@@ -1,5 +1,4 @@
 from tkinter import *
-from math import *
 from Vecteurs_test import *
 from Clothoide_v2 import *
 
@@ -10,15 +9,10 @@ def point(event):
     points_y.append(y)
 
     cnv.create_text(points_x[-1], points_y[-1], text='●')
-    # cnv.create_text(points_x[-1], points_y[-1] + 10, text=len(points_x))
-
-    '''if len(points_x) > 1:
-        cnv.create_line(points_x[-2], points_y[-2], points_x[-1], points_y[-1])'''
 
     if len(points_x) > 2:
         BA = Vect(points_x[-2], points_y[-2], points_x[-3], points_y[-3], 'vecteur')
         BC = Vect(points_x[-2], points_y[-2], points_x[-1], points_y[-1], 'vecteur')
-        # cnv.create_text(points_x[-2], points_y[-2] - 10, text=round(BA.angle(BC)), fill='red')
         bissectrice(BA, BC)
 
 
@@ -213,9 +207,6 @@ def bissectrice(BA, BC):
             xE, yE = xB + cos(angleF * 2 * pi / 360) * U, yB - sin(angleF * 2 * pi / 360) * U
             clothoide(1, -1)
 
-
-
-
 def clothoide(a, b):
     global x
     global y
@@ -312,8 +303,7 @@ X = []
 Y =[]
 
 DIM = 600
-dist = 2
-R = 100
+R = 30
 cnv = Canvas(route, width=DIM, height=DIM)
 
 cnv.pack()
