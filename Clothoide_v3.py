@@ -64,15 +64,8 @@ def clothoide_fct(xa,ya,xb,xf,yf,xe,ye):
 
 
 
-    x2.reverse()
-    y2.reverse()
 
 
-    #la symétrie
-    l=len(x2)
-    for  i in range(1,l-2):
-        x2.append(2*x2[l-1]+x2[l-i])
-        y2.append(2*y2[l-1]-y2[l-i])
 
     plt.plot(x2, y2, '-0', color='red')
     print("nombre=", nb * 2)
