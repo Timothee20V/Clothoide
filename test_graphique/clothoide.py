@@ -1,5 +1,3 @@
-
-from math import *
 from Vecteurs_test import *
 from Clothoide_v2 import *
 
@@ -244,7 +242,6 @@ def transformation_clothoide(a, b, x, y):
     BG = BE * (BG_dist / BE.norme)
 
     xG, yG = BG.x + xB, BG.y + yB
-
     BG = Vect(xB, yB, xG, yG, 'vecteur')
 
     # dimension de la clothoide
@@ -271,10 +268,6 @@ def transformation_clothoide(a, b, x, y):
         y[i] = yG - y[i] + y[-1]
 
     return x, y
-
-
-points_x = []
-points_y = []
 
 
 R = 100
