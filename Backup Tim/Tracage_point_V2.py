@@ -2,7 +2,7 @@ from tkinter import *
 from math import *
 from Vecteurs_test import *
 from Clothoide_v2 import *
-from Clothoide_v3 import *
+
 
 
 def point(event):
@@ -35,8 +35,8 @@ def bissectrice(BA, BC):
     global xC, yC
     global xE, yE
     global xF, yF
-    global xG, yG
     global xH, yH
+    global teta
 
     xA, yA = BA.x2, BA.y2
     xB, yB = BA.x1, BA.y1
@@ -213,14 +213,10 @@ def bissectrice(BA, BC):
             clothoide(1, -1)
 
 
-    BE = Vect(xB, yB, xE, yE, 'vecteur')
+
     EF = Vect(xE, yE, BF.x + xB, BF.y + yB, 'vecteur')
 
-    BG_dist = R / cos((pi - 2 * teta) / 2) - R  # Longueur BG
-    BG = BE * (BG_dist / BE.norme)
 
-
-    xG, yG = BG.x + xB, BG.y + yB
 
 
     cnv.create_text(xA, yA + 10, text='A')
@@ -271,12 +267,12 @@ def clothoide(a, b):
     y = []
     w = 0
     while angle_tangente < angle_tangente_final:
-        x.append(200*integ(w))
-        y.append(200*integ2(w))
+        x.append(integ(w))
+        y.append(integ2(w))
         if len(x) > 1:
             angle_tangente = atan((y[-1] - y[-2]) / (x[-1] - x[-2]))  # arctan(dy/dx)
         w = w + 0.01
-    y = [i*(1) for i in y]
+
 
 
 
@@ -305,6 +301,18 @@ def clothoide(a, b):
 
 
 def affichage_clothoide(a, b):
+    global xG, yG
+
+    BE = Vect(xB, yB, xE, yE, 'vecteur')
+    BG_dist = R / cos((pi - 2 * teta) / 2) - R  # Longueur BG
+    BG = BE * (BG_dist / BE.norme)
+
+    xG, yG = BG.x + xB, BG.y + yB
+    BG = Vect(xB, yB, xG, yG, 'vecteur')
+    coef = BG.norme * sin(teta) * 4
+    for i in range(len(x)):
+        x[i] = coef * x[i]
+        y[i] = coef * y[i]
 
     # rotation d'angle phi, de la clothoide
     phi = Vect(xA, yA, xB, yB, 'vecteur').angle(Vect(xA, yA, xA + 1, yA, 'vecteur'))
@@ -312,11 +320,9 @@ def affichage_clothoide(a, b):
     phi = phi * 2 * pi / 360
 
     for i in range(1, len(x)):
-        xI = x[i]
-        yI = y[i]
-        angle_pro = Vect(0, 0, 1, 0, 'vecteur').angle(Vect(0, 0, xI, yI, 'vecteur'))
+        angle_pro = Vect(0, 0, 1, 0, 'vecteur').angle(Vect(0, 0, x[i], y[i], 'vecteur'))
         angle_pro = angle_pro * 2 * pi / 360
-        norme = Vect(0, 0, xI, yI, 'vecteur').norme
+        norme = Vect(0, 0, x[i], y[i], 'vecteur').norme
         x[i] = norme * cos(a*angle_pro + b*phi)
         y[i] = norme * sin(a*angle_pro + b*phi)
 
@@ -329,18 +335,32 @@ def affichage_clothoide(a, b):
 
     # deplacement de la clothoide
 
+
+
     for i in range(0, len(x)):
-        x[i] = x[i] + xA
-        y[i] = yA - y[i]
-        if i > 2:
+        x[i] = x[i] + xG - x[-1]
+        y[i] = yG - y[i] + y[-1]
+        if i > 1:
             cnv.create_line(x[i-1], y[i-1], x[i], y[i])
         cnv.create_text(0, 0, text='●')
         cnv.create_text(10, 100, text='100y')
         cnv.create_text(100, 10, text='100x')
 
+
     '''plt.axis('equal')
     plt.plot(x, y)
     plt.show()'''
+
+
+def sur_droite(u, xX, yX, xI, yI):
+    a = u.y
+    b = -u.x
+    c = -a * xX -b * yX
+    if a*xI + b*yI + c == 0:
+        return True
+    else:
+        return False
+
 
 route = Tk()
 route.title('Route')
