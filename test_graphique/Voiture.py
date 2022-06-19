@@ -11,6 +11,8 @@ class Car(pygame.sprite.Sprite):
         self.image = self.get_image(0, 0)
         self.image.set_colorkey([255, 255, 255])  # enleve la couleur blanche de l'image
         self.rect = self.image.get_rect()
+        self.hitbox = pygame.Rect(0, 0, self.rect.width, self.rect.height)
+        self.old_position = self.position.copy()
         self.position = [x, y]
 
     def update(self):

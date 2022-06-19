@@ -9,10 +9,17 @@ class flag(pygame.sprite.Sprite):
         self.image = self.get_image(0, 0)
         self.image.set_colorkey([255, 255, 255])  # enleve la couleur blanche de l'image
         self.rect = self.image.get_rect()
+        self.hitbox = pygame.Rect(0, 0, self.rect.width, self.rect.height)
         self.position = [x, y]
+        self.old_position = self.position.copy()
 
     def update(self):
         self.rect.center = self.position
+
+    def move_back(self):
+        self.position = self.old_position
+        self.rect.center = self.position
+        self.hitbox.center = self.rect.center
 
     def get_image(self, x, y):
         image = pygame.Surface([16, 16])
