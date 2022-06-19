@@ -26,13 +26,18 @@ def clothoide_fct(xa,ya,xb,yb,xf,yf,xe,ye):
 
 
 
-    L=sqrt((xa-xf)**2+(ya-yf)**2)
+    L=sqrt((xa-xf)**2+(ya-yf)**2)/10
     #longueur du premier pan de courbe
 
 
     i = 1
-    C=L
+    C=L/10
     #on itère une fois le programme pour éviter la division par 0
+    L = L + C
+    phi = phi + L / C ** 2
+    x2.append(x2[i] + cos(phi) * C * x1x + sin(phi) * C * y1x)
+    y2.append(y2[i] + sin(phi) * C * y1y + cos(phi) * C * x1y)
+    i = i + 1
     L = L + C
     phi = phi + L / C ** 2
     x2.append(x2[i] + cos(phi) * C * x1x + sin(phi) * C * y1x)
@@ -40,8 +45,8 @@ def clothoide_fct(xa,ya,xb,yb,xf,yf,xe,ye):
     i = i + 1
     if xb!=xe:
         #xb=xe entraine un division par 0
-        """while ((x2[-1]-xe)*(yb-ye)/abs(xb-xe)+y2[-1])*((x2[-2]-xe)*(yb-ye)/abs(xb-xe)+y2[-2])>0:"""
-        while len (y2)<100:
+        while (((x2[-1]-xe)*(yb-ye)/(abs(xb-xe))-y2[-1]+ye)*(((x2[-2]-xe)*(yb-ye)/(abs(xb-xe))-y2[-2]+ye)))>0 :
+
 #on vérifie que ce pan de droite ne traverse pas BE
 
             L = L + C
